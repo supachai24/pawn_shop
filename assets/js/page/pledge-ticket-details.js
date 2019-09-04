@@ -76,7 +76,7 @@ $("#btnRedeem").click(function() {
                 var pledgeTicketID = getUrlParameter('pledgeTicketID');
                 var params = "id=" + pledgeTicketID;
                 $.ajax({
-                    url: api + 'api/update-pledge-ticket-status.php?' + params,
+                    url: api + 'api-pawn-shop/update-pledge-ticket-status.php?' + params,
                     method: 'GET',
                     processData: false,
                     contentType: false,
@@ -107,12 +107,43 @@ $("#btnRedeem").click(function() {
 });
 
 $("#btnContinueRate").click(function() {
-    console.log("Click");
     $("#continueRateModal").modal();
 });
 
 $("#btnCancel").click(function() {
-    console.log("Click");
+    swal({
+        title: "ยืนยันยกเลิกตั๋วจำนำ",
+        text: "คุณต้องการยกเลิกตั๋วจำนำใช่หรือไม่?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+        }).then((willCancel) => {
+            if (willCancel) {
+                var pledgeTicketID = getUrlParameter('pledgeTicketID');
+                var params = "id=" + pledgeTicketID;
+                $.ajax({
+                    url: api + 'api-pawn-shop/cancel-pledge-ticket.php?' + params,
+                    method: 'GET',
+                    processData: false,
+                    contentType: false,
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        if (data.status.code == 0) {
+                            swal({
+                                title: "ดำเนินการเรียบร้อย",
+                                icon: "success",
+                            }).then(function() {
+                                window.location.href = "index.php";
+                            });
+                        }
+                    },
+                    error: function(jqXHR, textStatus) {
+                        console.log("Error", textStatus, jqXHR);
+                    }
+                });
+            } 
+    });
 });
 
 function clearData() {
@@ -137,6 +168,10 @@ function clearData() {
     $("#size").text('');
     $("#description").text('');
     $("#redeemPrice").text('');
+    $("#modalPledgeTicketID").text('');
+    $("#modalPrice").text('');
+    $("#modalInterestRate").text('');
+    $("#priceRate").text('');
 }
 
 function disabledButton() {
@@ -149,7 +184,7 @@ $("#btnConfirm").click(function() {
     var priceRate = $("#priceRate").text();
     var params = "id=" + pledgeTicketID + "&priceRate=" + priceRate;
     $.ajax({
-        url: api + 'api/add-continue-rate.php?' + params,
+        url: api + 'api-pawn-shop/add-continue-rate.php?' + params,
         method: 'GET',
         processData: false,
         contentType: false,
@@ -157,11 +192,13 @@ $("#btnConfirm").click(function() {
         success: function (data) {
             console.log(data);
             if (data.status.code == 0) {
-                clearData();
-                call();
                 swal({
                     title: "ดำเนินการเรียบร้อย",
                     icon: "success",
+                }).then(function() {
+                    clearData();
+                    call();
+                    callContinueRate();
                 });
                 $("#continueRateModal").modal('hide');
             }
@@ -184,6 +221,13 @@ function callContinueRate() {
         success: function (data) {
             console.log(data);
             var results = data;
+            results.data.forEach(function(element) {
+                var i = element.ContinueDate.substring(5, 7);
+                var month = handleGetMonth();
+                if (i == month) {
+                    $("#btnContinueRate").prop("disabled", true);
+                }
+            });
             display(results);
         }
     });
@@ -198,22 +242,9 @@ if (typeof table != "undefined") table.destroy();
     searching: false,
     aLengthMenu: [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]],
     iDisplayLength: 5,
-    drawCallback: function(settings) {
-    $(".btnDetails").unbind("click");
-    $(".btnDetails").click(function() {
-    
-        var trParents = $(this).parents("tr");
-        
-    });
-
-    $(".btnDelete").unbind("click");
-    $(".btnDelete").click(function() {
-
-    });
-  },
-  deferRender: true,
-  dom: "lfBrtip",
-  buttons: []
+    deferRender: true,
+    dom: "lfBrtip",
+    buttons: []
 });
 
 function display(results) {
@@ -239,5 +270,15 @@ function display(results) {
         });
     } else {
         console.log('Empty data');
+    }
+}
+
+function handleGetMonth() {
+    var date = new Date();
+    var month = date.getMonth() + 1;
+    if (month != 10 || month != 11 || month != 12) {
+        return "0" + month;
+    } else {
+        return month;
     }
 }

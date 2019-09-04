@@ -66,6 +66,8 @@
                                         </div>
 
                                         <form class="wizard-content mt-2" id="wizard-steps" role="tablist">
+                                            <input type="hidden" id="customerId">
+
                                             <!-- STEP 1 -->
                                             <div class="wizard-pane active" id="step1">
                                                 <div class="form-group row align-items-center">
@@ -77,11 +79,15 @@
                                                 <div class="form-group row align-items-center">
                                                     <label class="col-md-4 text-md-right text-left">คำนำหน้า</label>
                                                     <div class="col-lg-4 col-md-6">
-                                                        <select name="title" id="" class="form-control">
+                                                        <select name="title" id="title" class="form-control">
+                                                            <option value="0">-- เลือกคำนำหน้า --</option>
                                                             <option value="นาย">นาย</option>
                                                             <option value="นาง">นาง</option>
                                                             <option value="นางสาว">นางสาว</option>
                                                         </select>
+                                                        <div class="invalid-title">
+                                                            -- กรุณากรอกชื่อ --
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row align-items-center">
@@ -218,7 +224,7 @@
                                                 <div class="form-group row align-items-center">
                                                     <label class="col-md-4 text-md-right text-left">ราคาทรัพย์สิน <span class="text-danger">*</span></label>
                                                     <div class="col-lg-4 col-md-6">
-                                                        <input type="number" name="price" id="price" class="form-control">
+                                                        <input type="text" name="price" id="price" class="form-control">
                                                         <div class="invalid-price">
                                                             -- กรุณากรอกราคาทรัพย์สิน --
                                                         </div>
@@ -242,6 +248,7 @@
                                                             <input type="number" name="totalPrice" id="totalPrice" class="form-control" readonly>
                                                         </div>
                                                 </div>
+                                                <input type="hidden" id="interestPeriod" value="30">
                                                 <div class="form-group row">
                                                     <div class="col-md-4"></div>
                                                     <div class="col-lg-4 col-md-6 text-right">

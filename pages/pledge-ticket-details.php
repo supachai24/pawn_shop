@@ -25,7 +25,7 @@
                     <div class="section-body">
                         <div class="row">
                             <div class="col-md-4">
-                                <div class="card">
+                                <div class="card card-primary">
                                     <div class="card-header">
                                         <h4>รายละเอียด</h4>
                                     </div>
@@ -43,7 +43,7 @@
                                 <div class="tab-content" id="v-pills-tabContent">
 
                                     <div class="tab-pane fade show active" id="v-pills-pledge-ticker" role="tabpanel" aria-labelledby="v-pills-pledge-ticker-tab">
-                                        <div class="card">
+                                        <div class="card card-primary">
                                             <div class="card-header">
                                                 <h4>รายละเอียดตั๋วจำนำ</h4>
                                             </div>
@@ -95,7 +95,7 @@
                                     </div>
 
                                     <div class="tab-pane fade" id="v-pills-customer" role="tabpanel" aria-labelledby="v-pills-customer-tab">
-                                         <div class="card">
+                                         <div class="card card-primary">
                                             <div class="card-header">
                                                 <h4>รายละเอียดลูกค้า</h4>
                                             </div>
@@ -141,7 +141,7 @@
                                     </div>
 
                                     <div class="tab-pane fade" id="v-pills-asset" role="tabpanel" aria-labelledby="v-pills-asset-tab">
-                                        <div class="card">
+                                        <div class="card card-primary">
                                             <div class="card-header">
                                                 <h4>รายละเอียดทรัพย์สิน</h4>
                                             </div>
@@ -199,7 +199,7 @@
                                     </div>
 
                                     <div class="tab-pane fade" id="v-pills-continue-rate" role="tabpanel" aria-labelledby="v-pills-continue-rate-tab">
-                                        <div class="card">
+                                        <div class="card card-primary">
                                             <div class="card-header">
                                                 <h4>รายละเอียดต่อดอกเบี้ย</h4>
                                             </div>
@@ -262,8 +262,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="btnClose" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
-                            <button type="button" id="btnConfirm" class="btn btn-primary">ยืนยัน</button>
+                            <button type="button" id="btnClose" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" id="btnConfirm" class="btn btn-success">Submit</button>
                         </div>
                     </div>
                 </div>

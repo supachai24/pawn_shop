@@ -24,6 +24,10 @@ $(document).ready(function() {
     $("#price").mask('#.00', {reverse: true});
     $("#interestRate").mask('#.00', {reverse: true});
 
+    $("#title").change(function() {
+        $("#title").removeClass("require-input");
+        $(".invalid-title").css("display", "none");
+    });
     $("#name").keypress(function() {
         $("#name").removeClass("require-input");
         $(".invalid-name").css("display", "none");
@@ -84,23 +88,23 @@ function nextTab(e) {
 
 $(".next-step").click(function(e) {
     if (e.currentTarget.hash == "#step2") {
-        // if (validateStepOne()) {
+        if (validateStepOne()) {
             $("#step1").css('display', 'none');
             $("#step2").css('display', 'block');
             $("#step3").css('display', 'none');
             $(".step1").removeClass('wizard-step-active');
             $(".step2").addClass('wizard-step-active');
             $(".step3").removeClass('wizard-step-active');
-        // }
+        }
     } else if (e.currentTarget.hash == "#step3") {
-        // if (validateStepTwo()) {
+        if (validateStepTwo()) {
             $("#step1").css('display', 'none');
             $("#step2").css('display', 'none');
             $("#step3").css('display', 'block');
             $(".step1").removeClass('wizard-step-active');
             $(".step2").removeClass('wizard-step-active');
             $(".step3").addClass('wizard-step-active');
-        // }
+        }
     }
 });
 
@@ -123,7 +127,11 @@ $(".prev-step").click(function(e) {
 });
 
 function validateStepOne() {
-    if ($("#name").val() == "") {
+    if ($("#title").val() == 0) {
+        $("#title").addClass("require-input");
+        $(".invalid-title").css("display", "block");
+        return false;
+    } else if ($("#name").val() == "") {
         $("#name").addClass("require-input");
         $(".invalid-name").css("display", "block");
         return false;
@@ -179,11 +187,52 @@ function validateStepThree() {
 
 $("#wizard-steps").submit(function(e) {
     e.preventDefault();
-    var formData = JSON.stringify({
+    var title = $("#title").val();
+    var name = $("#name").val();
+    var surname = $("#surname").val();
+    var citizenId = $("#citizenId").val();
+    var address = $("#address").val();
+    var phone = $("#phone").val();
+    var email = $("#email").val();
+    var titleAsset = $("#titleAsset").val();
+    var categoryId = $("#category").val();
+    var brand = $("#brand").val();
+    var serialNo = $("#serialno").val();
+    var model = $("#model").val();
+    var size = $("#size").val();
+    var color = $("#color").val();
+    var description = $("#description").val();
+    var price = $("#price").val();
+    var interestRate = $("#interestRate").val();
+    var totalPrice = $("#totalPrice").val();
+    var interestPeriod = $("#interestPeriod").val();
+    var pledgeTicketId = "PT-" + (Math.floor(Math.random() * 899999999) + 100000000);
+    var customerId = $("#customerId").val();
 
+    var formData = JSON.stringify({
+        pledgeTicketId: pledgeTicketId,
+        title: title,
+        name: name,
+        surname: surname,
+        citizenId: citizenId,
+        address: address,
+        phone: phone,
+        email: email,
+        titleAsset: titleAsset,
+        categoryId: categoryId,
+        brand: brand,
+        serialno: serialNo,
+        model: model,
+        size: size,
+        color: color,
+        description: description,
+        price: price,
+        interestRate: interestRate,
+        totalPrice: totalPrice,
+        interestPeriod: interestPeriod
     });
     if (validateStepThree()) {
-        if ($("#customerId").val() == "") {
+        if (customerId == "") {
             $.ajax({
                 url: api + "api-pawn-shop/add-pledge-ticket.php",
                 method: "POST",
@@ -193,6 +242,23 @@ $("#wizard-steps").submit(function(e) {
                 dataType: "json",
                 success: function(data) {
                     console.log(data);
+                    var res = data;
+                    if (res.status.code == 0) {
+                        swal({
+                            title: "ดำเนินการเรียบร้อย",
+                            text: "บันทึกข้อมูลตั๋วจำนำเรียบร้อย",
+                            icon: "success"
+                        }).then(function() {
+                            handleClearInput();
+                            window.location.href = "pledging-process.php"
+                        });
+                    } else {
+                        swal({
+                            title: "ผิดพลาด",
+                            text: "บันทึกข้อมูลตั๋วจำนำไม่สำเร็จ",
+                            icon: "error"
+                        });
+                    }
                 },
                 error: function(jqXHR) {
                     console.log(jqXHR);
@@ -201,3 +267,25 @@ $("#wizard-steps").submit(function(e) {
         }
     }
 });
+
+function handleClearInput() {
+    $("#title").val(0);
+    $("#name").val("");
+    $("#surname").val("");
+    $("#citizenId").val("");
+    $("#address").val("");
+    $("#phone").val("");
+    $("#email").val("");
+    $("#titleAsset").val("");
+    $("#categoty").val(0);
+    $("#brand").val("");
+    $("#serialno").val("");
+    $("#model").val("");
+    $("#size").val("");
+    $("#color").val("");
+    $("#description").val("");
+    $("#price").val("");
+    $("#interestRate").val(1.25);
+    $("#totalPrice").val("");
+    $("#customerId").val("");
+}
