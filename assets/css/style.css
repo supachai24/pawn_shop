@@ -947,7 +947,7 @@ table tr:hover .table-links {
   opacity: 1; }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.02); }
+  background-color: rgba(0, 0, 0, 0.01); }
 
 @media (max-width: 575.98px) {
   .table-responsive table {
@@ -2867,4 +2867,15 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 
 #btnConfirm, #btnClose {
   font-size: 16px;
+}
+
+.invalid-name, .invalid-surname, .invalid-address, .invalid-citizenId, .invalid-format-citizenId, .invalid-titleAsset,
+.invalid-category, .invalid-serialno {
+  display: none;
+  font-size: 12px;
+  color: red;
+}
+
+.require-input {
+  border-color: red !important;
 }
