@@ -3,16 +3,14 @@ function nextTab(e) {
 }
 
 $(".next-step").click(function(e) {
-    if ($("#step2")) {
-        console.log("Step 2");
+    if (e.currentTarget.hash == "#step2") {
         $("#step1").css('display', 'none');
         $("#step2").css('display', 'block');
         $("#step3").css('display', 'none');
         $(".step1").removeClass('wizard-step-active');
         $(".step2").addClass('wizard-step-active');
         $(".step3").removeClass('wizard-step-active');
-    } else if ($("#step3")) {
-        console.log("Step 3");
+    } else if (e.currentTarget.hash == "#step3") {
         $("#step1").css('display', 'none');
         $("#step2").css('display', 'none');
         $("#step3").css('display', 'block');
@@ -23,10 +21,19 @@ $(".next-step").click(function(e) {
 });
 
 $(".prev-step").click(function(e) {
-    if ($("#step1")) {
+    if (e.currentTarget.hash == "#step1") {
         $("#step1").css('display', 'block');
         $("#step2").css('display', 'none');
+        $("#step3").css('display', 'none');
         $(".step1").addClass('wizard-step-active');
         $(".step2").removeClass('wizard-step-active');
+        $(".step3").removeClass('wizard-step-active');
+    } else if (e.currentTarget.hash == "#step2") {
+        $("#step1").css('display', 'none');
+        $("#step2").css('display', 'block');
+        $("#step3").css('display', 'none');
+        $(".step1").removeClass('wizard-step-active');
+        $(".step2").addClass('wizard-step-active');
+        $(".step3").removeClass('wizard-step-active');
     }
 });

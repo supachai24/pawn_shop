@@ -191,55 +191,11 @@
                                                         <input type="text" name="titleAsset" id="titleAsset" class="form-control">
                                                     </div>
                                                 </div>
-                                                <div class="form-group row align-items-center">
-                                                    <label class="col-md-4 text-md-right text-left">หมวดหมู่</label>
-                                                    <div class="col-lg-4 col-md-6">
-                                                        <select name="category" id="category" class="form-control">
-                                                            <option value="">เลือกหมวดหมู่</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row align-items-center">
-                                                    <label class="col-md-4 text-md-right text-left">ยี่ห้อ</label>
-                                                    <div class="col-lg-4 col-md-6">
-                                                        <input type="text" name="brand" id="brand" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row align-items-center">
-                                                    <label class="col-md-4 text-md-right text-left">Serial/Barcode</label>
-                                                    <div class="col-lg-4 col-md-6">
-                                                        <input type="text" name="serialno" id="serialno" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row align-items-center">
-                                                    <label class="col-md-4 text-md-right text-left">รุ่น</label>
-                                                    <div class="col-lg-4 col-md-6">
-                                                        <input type="text" name="model" id="model" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row align-items-center">
-                                                    <label class="col-md-4 text-md-right text-left">สี</label>
-                                                    <div class="col-lg-4 col-md-6">
-                                                        <input type="text" name="color" id="color" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row align-items-center">
-                                                    <label class="col-md-4 text-md-right text-left">ขนาด</label>
-                                                    <div class="col-lg-4 col-md-6">
-                                                        <input type="text" name="size" id="size" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row align-items-center">
-                                                    <label class="col-md-4 text-md-right text-left">รายละเอียด</label>
-                                                    <div class="col-lg-4 col-md-6">
-                                                        <textarea class="form-control" name="description" id="description"></textarea>
-                                                    </div>
-                                                </div>
                                                 <div class="form-group row">
                                                     <div class="col-md-4"></div>
                                                     <div class="col-lg-4 col-md-6 text-right">
                                                         <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" class="btn btn-icon icon-right btn-secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</a>
-                                                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" class="btn btn-icon icon-right btn-success">Submit <i class="far fa-check-circle"></i></a>
+                                                        <!-- <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" class="btn btn-icon icon-right btn-primary next-step">Next <i class="fas fa-arrow-right"></i></a> -->
                                                     </div>
                                                 </div>
                                             </div>
