@@ -269,8 +269,8 @@
                 </div>
             </div>
             
-            <!-- Footer -->
-            <?php include '../libraries/footer.php'; ?>
+    <!-- Footer -->
+    <?php include '../libraries/footer.php'; ?>
 
     <!-- JS Libraies -->
     <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>

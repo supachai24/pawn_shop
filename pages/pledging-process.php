@@ -73,7 +73,7 @@
                                                 <div class="form-group row align-items-center">
                                                     <label class="col-md-4 text-md-right text-left"></label>
                                                     <div class="col-lg-4 col-md-6 text-md-right">
-                                                        <button type="button" class="btn btn-warning btn-icon icon-left"><i class="fas fa-search"></i> ค้นหา</button>
+                                                        <button type="button" id="searchCustomer" class="btn btn-warning btn-icon icon-left"><i class="fas fa-search"></i> ค้นหา</button>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row align-items-center">
@@ -267,6 +267,34 @@
                     </div>
                 </section>
             </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="customerModal" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content animated fadeInUp">
+                <div class="modal-header">
+                    <h5 class="modal-title">ค้นหาข้อมูลลูกค้า</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table id="customerTable" class="table table-striped table-md">
+                            <thead>
+                                <tr>
+                                    <th width="5%">ลำดับ</th>
+                                    <th width="30%">รหัสลูกค้า</th>
+                                    <th width="30%">ชื่อ-นามสกุล</th>
+                                    <th width="30%">เลขบัตรประชาชน</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
             
     <!-- Footer -->
     <?php include '../libraries/footer.php'; ?>
@@ -274,6 +302,10 @@
     <!-- JS Libraies -->
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.16/dist/jquery.mask.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.0/js/select.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.0/js/select.bootstrap4.js"></script>
 
     <!-- Page Specific JS File -->
     <script src="../assets/js/page/pledging-process.js"></script>

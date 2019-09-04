@@ -6,7 +6,6 @@ $(document).ready(function() {
         contentType: false,
         dataType: "json",
         success: function(data) {
-            console.log(data);
             var res = data;
             res.data.forEach(function(element) {
                 $("#category").append(
@@ -79,6 +78,20 @@ $(document).ready(function() {
         var rate = parseFloat($("#interestRate").val());
         var totalPrice = price + ((price * rate)/100);
         $("#totalPrice").val(totalPrice.toFixed(2));
+    });
+
+    var table = $("#customerTable").DataTable();
+    $("#customerTable tbody").on('click', 'tr', function() {
+        var data = table.row(this).data();
+        $("#customerId").val(data[4].CustomerID);
+        $("#title").val(data[4].Title);
+        $("#name").val(data[4].Name);
+        $("#surname").val(data[4].Surname);
+        $("#citizenId").val(data[4].CitizenID);
+        $("#address").val(data[4].CurrentAddress);
+        $("#phone").val(data[4].Phone);
+        $("#email").val(data[4].Email);
+        $("#customerModal").modal("hide");
     });
 });
 
@@ -288,4 +301,66 @@ function handleClearInput() {
     $("#interestRate").val(1.25);
     $("#totalPrice").val("");
     $("#customerId").val("");
+}
+
+$("#searchCustomer").click(function() {
+    $.ajax({
+        url: api + "api-pawn-shop/get-customer.php",
+        method: "GET",
+        processData: false,
+        contentType: false,
+        dataType: "json",
+        success: function(data) {
+            var res = data;
+            display(res);
+        },
+        error: function(jqXHR) {
+            console.log(jqXHR);
+        }
+    });
+    $("#customerModal").modal();
+});
+
+if (typeof table != "undefined") table.destroy();
+    table = $("#customerTable").DataTable({
+    paging: true,
+    bSort: false,
+    searching: true,
+    aLengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+    iDisplayLength: 10,
+    deferRender: true,
+    dom: "lfBrtip",
+    buttons: []
+});
+
+function display(results) {
+    table.clear().draw();
+    if (typeof results.data[0] != "undefined") {
+        var index = 1;
+        results.data.forEach(function(data) {
+            tableData = [];
+            tableData.push(
+                '<input type="hidden" class="o_CustomerID" value="' + data.CustomerID + '" />' 
+                + '<input type="hidden" class="o_Title" value="' + data.Title + '" />'
+                + '<input type="hidden" class="o_Name" value="' + data.Name + '" />'   
+                + '<input type="hidden" class="o_Surname" value="' + data.Surname + '" />'
+                + '<input type="hidden" class="o_Phone" value="' + data.Phone + '" />'
+                + '<input type="hidden" class="o_CitizenID" value="' + data.CitizenID + '" />'
+                + '<input type="hidden" class="o_CustomerID" value="' + data.CustomerID + '" />'
+                + '<input type="hidden" class="o_CurrentAddress" value="' + data.CurrentAddress + '" />'
+                + '<input type="hidden" class="o_Email" value="' + data.Email + '" />'
+                + index++
+            );
+
+            tableData.push(data.CustomerID);
+            tableData.push(data.Title + ' ' + data.Name + ' ' + data.Surname);
+            tableData.push(data.CitizenID);
+            tableData.push(data);
+        
+            table.row.add(tableData);
+            table.draw();
+        });
+    } else {
+        console.log('Empty data');
+    }
 }
