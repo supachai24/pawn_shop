@@ -21,6 +21,8 @@ $(document).ready(function() {
 
     $("#citizenId").mask('0-0000-00000-00-0');
     $("#phone").mask('000-000-0000');
+    $("#price").mask('#.00', {reverse: true});
+    $("#interestRate").mask('#.00', {reverse: true});
 
     $("#name").keypress(function() {
         $("#name").removeClass("require-input");
@@ -51,6 +53,29 @@ $(document).ready(function() {
         $("#serialno").removeClass("require-input");
         $(".invalid-serialno").css("display", "none");
     });
+    $("#price").keypress(function() {
+        $("#price").removeClass("require-input");
+        $(".invalid-price").css("display", "none");
+    });
+    $("#interestRate").keypress(function() {
+        $("#interestRate").removeClass("require-input");
+        $(".invalid-interestRate").css("display", "none");
+        $(".invalid-format-interestRate").css("display", "none");
+    });
+
+    $("#price").keyup(function() {
+        var price = parseFloat($("#price").val());
+        var rate = parseFloat($("#interestRate").val());
+        var totalPrice = price + ((price * rate)/100);
+        $("#totalPrice").val(totalPrice.toFixed(2));
+    });
+
+    $("#interestRate").keyup(function() {
+        var price = parseFloat($("#price").val());
+        var rate = parseFloat($("#interestRate").val());
+        var totalPrice = price + ((price * rate)/100);
+        $("#totalPrice").val(totalPrice.toFixed(2));
+    });
 });
 
 function nextTab(e) {
@@ -68,14 +93,14 @@ $(".next-step").click(function(e) {
             $(".step3").removeClass('wizard-step-active');
         // }
     } else if (e.currentTarget.hash == "#step3") {
-        if (validateStepTwo()) {
+        // if (validateStepTwo()) {
             $("#step1").css('display', 'none');
             $("#step2").css('display', 'none');
             $("#step3").css('display', 'block');
             $(".step1").removeClass('wizard-step-active');
             $(".step2").removeClass('wizard-step-active');
             $(".step3").addClass('wizard-step-active');
-        }
+        // }
     }
 });
 
@@ -138,3 +163,41 @@ function validateStepTwo() {
     }
     return true;
 }
+
+function validateStepThree() {
+    if ($("#price").val() == "") {
+        $("#price").addClass("require-input");
+        $(".invalid-price").css("display", "block");
+        return false;
+    } else if ($("#interestRate").val().length < 3) {
+        $("#interestRate").addClass("require-input");
+        $(".invalid-format-interestRate").css("display", "block");
+        return false;
+    }
+    return true;
+}
+
+$("#wizard-steps").submit(function(e) {
+    e.preventDefault();
+    var formData = JSON.stringify({
+
+    });
+    if (validateStepThree()) {
+        if ($("#customerId").val() == "") {
+            $.ajax({
+                url: api + "api-pawn-shop/add-pledge-ticket.php",
+                method: "POST",
+                processData: false,
+                contentType: false,
+                data: formData,
+                dataType: "json",
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function(jqXHR) {
+                    console.log(jqXHR);
+                }
+            });
+        }
+    }
+});

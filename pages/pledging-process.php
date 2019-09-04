@@ -216,16 +216,37 @@
                                             <!-- STEP 3 -->
                                             <div class="wizard-pane" role="tabpanel" id="step3" style="display: none;">
                                                 <div class="form-group row align-items-center">
-                                                    <label class="col-md-4 text-md-right text-left">ทรัพย์สิน</label>
+                                                    <label class="col-md-4 text-md-right text-left">ราคาทรัพย์สิน <span class="text-danger">*</span></label>
                                                     <div class="col-lg-4 col-md-6">
-                                                        <input type="text" name="titleAsset" id="titleAsset" class="form-control">
+                                                        <input type="number" name="price" id="price" class="form-control">
+                                                        <div class="invalid-price">
+                                                            -- กรุณากรอกราคาทรัพย์สิน --
+                                                        </div>
                                                     </div>
+                                                </div>
+                                                <div class="form-group row align-items-center">
+                                                    <label class="col-md-4 text-md-right text-left">ดอกเบี้ย</label>
+                                                    <div class="col-lg-4 col-md-6">
+                                                        <input type="text" name="interestRate" id="interestRate" class="form-control" value="1.25">
+                                                        <div class="invalid-interestRate">
+                                                            -- กรุณากรอกดอกเบี้ย --
+                                                        </div>
+                                                        <div class="invalid-format-interestRate">
+                                                            -- กรุณากรอกทศนิยมอย่างน้อย 2 ตำแหน่ง --
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row align-items-center">
+                                                    <label class="col-md-4 text-md-right text-left">ราคารวมดอกเบี้ย</label>
+                                                        <div class="col-lg-4 col-md-6">
+                                                            <input type="number" name="totalPrice" id="totalPrice" class="form-control" readonly>
+                                                        </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-md-4"></div>
                                                     <div class="col-lg-4 col-md-6 text-right">
                                                         <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" class="btn btn-icon icon-right btn-secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</a>
-                                                        <!-- <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" class="btn btn-icon icon-right btn-primary next-step">Next <i class="fas fa-arrow-right"></i></a> -->
+                                                        <button type="submit" class="btn btn-icon icon-right btn-success">Submit <i class="far fa-check-circle"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
