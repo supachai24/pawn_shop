@@ -1,4 +1,4 @@
-            <footer class="main-footer">
+            <!-- <footer class="main-footer">
                 <div class="footer-left">
                     Copyright &copy; 2019
                     <div class="bullet"></div> Develop By <span>Supachai Wechkama</span>
@@ -7,7 +7,7 @@
                 <div class="footer-right">
                     2.3.0
                 </div>
-            </footer>
+            </footer> -->
         </div>
     </div>
 

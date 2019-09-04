@@ -19,7 +19,13 @@
                     <a class="nav-link" href="pledging-process.php"><i class="fas fa-file-alt"></i><span>Pledging Process</span></a>
                 </li>
             </li>
-            <li class="menu-header">Dashboard</li>
+            <li class="nav-item dropdown">
+                <?= (basename($_SERVER['PHP_SELF']) == "customer.php" ||
+                    basename($_SERVER['PHP_SELF']) == "customer-details.php") ? "<li class=\"active\" >" : "<li>" ?>
+                    <a class="nav-link" href="customer.php"><i class="fas fa-user"></i><span>Customer</span></a>
+                </li>
+            </li>
+            <!-- <li class="menu-header">Dashboard</li>
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                 <ul class="dropdown-menu">
@@ -36,7 +42,7 @@
                 <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
                 </ul>
             </li>
-            <!-- <li class="active"><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li> -->
+            <li class="active"><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
                 <ul class="dropdown-menu">
@@ -158,13 +164,7 @@
                 <li><a href="utilities-subscribe.html">Subscribe</a></li>
                 </ul>
             </li>
-            <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li>
+            <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li> -->
         </ul>
-
-        <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-            <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
-                <i class="fas fa-rocket"></i> Documentation
-            </a>
-        </div>
     </aside>
 </div>

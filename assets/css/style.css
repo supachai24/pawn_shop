@@ -2883,3 +2883,9 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 #customerTable tr {
   cursor: pointer;
 }
+
+.btn-add {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+}
