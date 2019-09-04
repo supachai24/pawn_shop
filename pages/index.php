@@ -20,26 +20,23 @@
                 <section class="section">
                     <div class="section-header">
                         <h1>รายการตั๋วจำนำ</h1>
-                        <div class="text-right">
-                            <button type="button" id="btnLine" class="btn btn-success">LINE</button>
-                        </div>
                     </div>
 
                     <div class="section-body">
-                        <div class="card">
+                        <div class="card card-primary">
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="pledgeTable" class="table table-striped table-md">
                                         <thead>
                                             <tr>
                                                 <th width="5%">ลำดับ</th>
-                                                <th width="10%">ตั๋วรับจำนำ</th>
+                                                <th width="13%">ตั๋วรับจำนำ</th>
                                                 <th width="17%">วันที่จำนำ</th>
                                                 <th width="15%">ลูกค้า</th>
                                                 <th width="12%">เบอร์โทรศัพท์</th>
-                                                <th width="15%">วันที่ครบกำหนด</th>
-                                                <th width="11%">เหลืออีก(วัน)</th>
-                                                <th width="15%"></th>
+                                                <th width="16%">วันที่ครบกำหนด</th>
+                                                <th width="10%">เหลืออีก(วัน)</th>
+                                                <th width="12%"></th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -59,11 +56,11 @@
     <script src="https://cdn.datatables.net/select/1.3.0/js/select.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.3.0/js/select.bootstrap4.js"></script>
 
-    <!-- Page Specific JS File -->
-    <script src="../assets/js/page/index.js"></script>
-    
     <!-- Template JS File -->
     <script src="../assets/js/scripts.js"></script>
     <script src="../assets/js/custom.js"></script>
+
+    <!-- Page Specific JS File -->
+    <script src="../assets/js/page/index.js"></script>
 </body>
 </html>

@@ -152,16 +152,16 @@
                                                         <span id="assetID"></span>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row mb-6">
-                                                    <span class="text-md-right col-12 col-md-6 col-lg-6">ประเภทหลัก : </span>
+                                                <div class="form-group row mb-4">
+                                                    <span class="text-md-right col-12 col-md-6 col-lg-6">ทรัพย์สิน : </span>
                                                     <div class="col-sm-12 col-md-6">
-                                                        <span id="category"></span>
+                                                        <span id="titleAsset"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row mb-6">
-                                                    <span class="text-md-right col-12 col-md-6 col-lg-6">ประเภทย่อย : </span>
+                                                    <span class="text-md-right col-12 col-md-6 col-lg-6">หมวดหมู่ : </span>
                                                     <div class="col-sm-12 col-md-6">
-                                                        <span id="subCategory"></span>
+                                                        <span id="category"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row mb-6">
@@ -278,11 +278,11 @@
     <script src="https://cdn.datatables.net/select/1.3.0/js/select.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.3.0/js/select.bootstrap4.js"></script>
 
-    <!-- Page Specific JS File -->
-    <script src="../assets/js/page/pledge-ticket-details.js"></script>
-    
     <!-- Template JS File -->
     <script src="../assets/js/scripts.js"></script>
     <script src="../assets/js/custom.js"></script>
+
+    <!-- Page Specific JS File -->
+    <script src="../assets/js/page/pledge-ticket-details.js"></script>
 </body>
 </html>

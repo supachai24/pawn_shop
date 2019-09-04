@@ -2,7 +2,7 @@ if (typeof table != "undefined") table.destroy();
     table = $("#pledgeTable").DataTable({
     paging: true,
     bSort: false,
-    searching: false,
+    searching: true,
     aLengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
     iDisplayLength: 10,
     drawCallback: function(settings) {
@@ -77,13 +77,13 @@ function display(results) {
                 + '<input type="hidden" class="o_PledgeStatusName" value="' + data.PledgeStatusName + '" />'
                 + '<input type="hidden" class="o_CategoryName" value="' + data.CategoryName + '" />'
                 + '<input type="hidden" class="o_SubCategoryName" value="' + data.SubCategoryName + '" />'
-                + '<input type="hidden" class="o_TitleName" value="' + data.TitleName + '" />'
+                + '<input type="hidden" class="o_TitleName" value="' + data.Title + '" />'
                 + index++
             );
 
             tableData.push(data.PledgeTicketID);
             tableData.push(data.PledgeStartDate);
-            tableData.push(data.Name + ' ' + data.Surname);
+            tableData.push(data.Title + ' ' + data.Name + ' ' + data.Surname);
             tableData.push(data.Phone);
             tableData.push(data.PledgeEndDate);
             tableData.push(
@@ -105,7 +105,7 @@ function display(results) {
 
 function call() {
     $.ajax({
-        url: '../api/get-pledge-ticket.php',
+        url: api + 'api-pawn-shop/get-pledge-ticket.php',
         method: 'GET',
         processData: false,
         contentType: false,
@@ -130,7 +130,7 @@ function countDownDate(date, id) {
     if (distance < 0) {
         var params = "id=" + id;
         $.ajax({
-            url: '../api/update-pledge-ticket-unactive.php?' + params,
+            url: api + 'api-pawn-shop/update-pledge-ticket-unactive.php?' + params,
             method: 'GET',
             processData: false,
             contentType: false,
@@ -143,18 +143,3 @@ function countDownDate(date, id) {
 
     return days;    
 }
-
-$("#btnLine").click(function() {
-    console.log("LINE");
-    let params = "response_type=" + 'code' + "&client_id=" + '6bgZj4zeAJQBWFMWgdLCVq' + "&redirect_uri=" + 'https://cors-anywhere.herokuapp.com' + '&scope=' + 'notify' + '&state=' +'azsd2341';
-    $.ajax({
-        url: 'https://notify-bot.line.me/oauth/authorize?' + params,
-        method: 'GET',
-        processData: false,
-        contentType: false,
-        dataType: "json",
-        success: function (data) {
-            console.log(data);
-        }
-    });
-});

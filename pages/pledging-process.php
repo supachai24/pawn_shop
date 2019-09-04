@@ -29,7 +29,7 @@
 
                         <div class="row">
                             <div class="col-12">
-                                <div class="card">
+                                <div class="card card-primary">
                                     <div class="card-header">
                                         <h4>เพิ่มตั๋วรับจำนำ</h4>
                                     </div>
@@ -42,7 +42,7 @@
                                                             <i class="far fa-user"></i>
                                                         </div>
                                                         <div class="wizard-step-label">
-                                                            <h6>ข้อมูลลูกค้า</h6> 
+                                                            ข้อมูลลูกค้า
                                                         </div>
                                                     </div>
                                                     <div class="wizard-step step2">
@@ -50,17 +50,17 @@
                                                             <i class="fas fa-box-open"></i>
                                                         </div>
                                                         <div class="wizard-step-label">
-                                                            <h6>ข้อมูลทรัพย์สิน</h6> 
+                                                            ข้อมูลทรัพย์สิน
                                                         </div>
                                                     </div>
-                                                    <!-- <div class="wizard-step step3">
+                                                    <div class="wizard-step step3">
                                                         <div class="wizard-step-icon">
-                                                            <i class="fas fa-server"></i>
+                                                            <i class="fas fa-hand-holding-usd"></i>
                                                         </div>
                                                         <div class="wizard-step-label">
-                                                            Server Information
+                                                            ข้อมูลรับจำนำ
                                                         </div>
-                                                    </div> -->
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -69,16 +69,9 @@
                                             <!-- STEP 1 -->
                                             <div class="wizard-pane active" id="step1">
                                                 <div class="form-group row align-items-center">
-                                                    <label class="col-md-4 text-md-right text-left">ค้นหาลูกกค้า</label>
-                                                    <div class="col-lg-4 col-md-6">
-                                                        <input type="text" name="searchCustomer" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row align-items-center">
                                                     <label class="col-md-4 text-md-right text-left"></label>
                                                     <div class="col-lg-4 col-md-6 text-md-right">
-                                                        <button type="button" class="btn btn-warning btn-icon icon-left"><i class="fas fa-user-plus"></i> เพิ่มลูกค้า</button>
-                                                        <button type="button" class="btn btn-primary btn-icon icon-left"><i class="fas fa-search"></i> ค้นหา</button>
+                                                        <button type="button" class="btn btn-warning btn-icon icon-left"><i class="fas fa-search"></i> ค้นหา</button>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row align-items-center">
@@ -121,30 +114,6 @@
                                                         <input type="email" name="email" class="form-control">
                                                     </div>
                                                 </div>
-                                                <!-- <div class="form-group row">
-                                                    <label class="col-md-4 text-md-right text-left mt-2">Role</label>
-                                                    <div class="col-lg-4 col-md-6">
-                                                        <div class="selectgroup w-100">
-                                                        <label class="selectgroup-item">
-                                                            <input type="radio" name="value" value="developer" class="selectgroup-input">
-                                                            <span class="selectgroup-button">Developer</span>
-                                                        </label>
-                                                        <label class="selectgroup-item">
-                                                            <input type="radio" name="value" value="ceo" class="selectgroup-input">
-                                                            <span class="selectgroup-button">CEO</span>
-                                                        </label>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
-                                                <!-- <div class="form-group row">
-                                                    <div class="col-md-4"></div>
-                                                    <div class="col-lg-4 col-md-6">
-                                                        <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" name="agree" class="custom-control-input" id="agree">
-                                                        <label class="custom-control-label" for="agree">I agree with the terms and conditions</label>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
                                                 <div class="form-group row">
                                                     <div class="col-md-4"></div>
                                                     <div class="col-lg-4 col-md-6 text-right">
@@ -156,56 +125,121 @@
                                             <!-- STEP 2 -->
                                             <div class="wizard-pane" role="tabpanel" id="step2" style="display: none;">
                                                 <div class="form-group row align-items-center">
-                                                    <label class="col-md-4 text-md-right text-left">ประเภทหลัก</label>
+                                                    <label class="col-md-4 text-md-right text-left">ทรัพย์สิน</label>
                                                     <div class="col-lg-4 col-md-6">
-                                                        <select name="category" id="" class="form-control">
-                                                            <option value="">เลือกประเภทหลัก</option>
-                                                        </select>
+                                                        <input type="text" name="titleAsset" id="titleAsset" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row align-items-center">
-                                                    <label class="col-md-4 text-md-right text-left">ประเภทย่อย</label>
+                                                    <label class="col-md-4 text-md-right text-left">หมวดหมู่</label>
                                                     <div class="col-lg-4 col-md-6">
-                                                        <select name="sub-category" id="" class="form-control">
-                                                            <option value="">เลือกประเภทย่อย</option>
+                                                        <select name="category" id="category" class="form-control">
+                                                            <option value="">เลือกหมวดหมู่</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row align-items-center">
                                                     <label class="col-md-4 text-md-right text-left">ยี่ห้อ</label>
                                                     <div class="col-lg-4 col-md-6">
-                                                        <input type="text" name="brand" class="form-control">
+                                                        <input type="text" name="brand" id="brand" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row align-items-center">
+                                                    <label class="col-md-4 text-md-right text-left">Serial/Barcode</label>
+                                                    <div class="col-lg-4 col-md-6">
+                                                        <input type="text" name="serialno" id="serialno" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row align-items-center">
                                                     <label class="col-md-4 text-md-right text-left">รุ่น</label>
                                                     <div class="col-lg-4 col-md-6">
-                                                        <input type="text" name="model" class="form-control">
+                                                        <input type="text" name="model" id="model" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row align-items-center">
                                                     <label class="col-md-4 text-md-right text-left">สี</label>
                                                     <div class="col-lg-4 col-md-6">
-                                                        <input type="text" name="color" class="form-control">
+                                                        <input type="text" name="color" id="color" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row align-items-center">
                                                     <label class="col-md-4 text-md-right text-left">ขนาด</label>
                                                     <div class="col-lg-4 col-md-6">
-                                                        <input type="text" name="size" class="form-control">
+                                                        <input type="text" name="size" id="size" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row align-items-center">
-                                                    <label class="col-md-4 text-md-right text-left">ขนาด</label>
+                                                    <label class="col-md-4 text-md-right text-left">รายละเอียด</label>
                                                     <div class="col-lg-4 col-md-6">
-                                                        <textarea class="form-control" name="size"></textarea>
+                                                        <textarea class="form-control" name="description" id="description"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-md-4"></div>
                                                     <div class="col-lg-4 col-md-6 text-right">
-                                                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" class="btn btn-icon icon-right btn-primary prev-step"><i class="fas fa-arrow-left"></i> Previous</a>
-                                                        <a href="#step2" data-toggle="tab" aria-controls="step3" role="tab" class="btn btn-icon icon-right btn-primary next-step">Submit <i class="far fa-check-circle"></i></a>
+                                                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" class="btn btn-icon icon-right btn-secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</a>
+                                                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" class="btn btn-icon icon-right btn-primary next-step">Next <i class="fas fa-arrow-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- STEP 3 -->
+                                            <div class="wizard-pane" role="tabpanel" id="step3" style="display: none;">
+                                                <div class="form-group row align-items-center">
+                                                    <label class="col-md-4 text-md-right text-left">ทรัพย์สิน</label>
+                                                    <div class="col-lg-4 col-md-6">
+                                                        <input type="text" name="titleAsset" id="titleAsset" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row align-items-center">
+                                                    <label class="col-md-4 text-md-right text-left">หมวดหมู่</label>
+                                                    <div class="col-lg-4 col-md-6">
+                                                        <select name="category" id="category" class="form-control">
+                                                            <option value="">เลือกหมวดหมู่</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row align-items-center">
+                                                    <label class="col-md-4 text-md-right text-left">ยี่ห้อ</label>
+                                                    <div class="col-lg-4 col-md-6">
+                                                        <input type="text" name="brand" id="brand" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row align-items-center">
+                                                    <label class="col-md-4 text-md-right text-left">Serial/Barcode</label>
+                                                    <div class="col-lg-4 col-md-6">
+                                                        <input type="text" name="serialno" id="serialno" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row align-items-center">
+                                                    <label class="col-md-4 text-md-right text-left">รุ่น</label>
+                                                    <div class="col-lg-4 col-md-6">
+                                                        <input type="text" name="model" id="model" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row align-items-center">
+                                                    <label class="col-md-4 text-md-right text-left">สี</label>
+                                                    <div class="col-lg-4 col-md-6">
+                                                        <input type="text" name="color" id="color" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row align-items-center">
+                                                    <label class="col-md-4 text-md-right text-left">ขนาด</label>
+                                                    <div class="col-lg-4 col-md-6">
+                                                        <input type="text" name="size" id="size" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row align-items-center">
+                                                    <label class="col-md-4 text-md-right text-left">รายละเอียด</label>
+                                                    <div class="col-lg-4 col-md-6">
+                                                        <textarea class="form-control" name="description" id="description"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-4"></div>
+                                                    <div class="col-lg-4 col-md-6 text-right">
+                                                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" class="btn btn-icon icon-right btn-secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</a>
+                                                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" class="btn btn-icon icon-right btn-success">Submit <i class="far fa-check-circle"></i></a>
                                                     </div>
                                                 </div>
                                             </div>

@@ -1,22 +1,8 @@
-// Get parameter from url
-function getUrlParameter(param) {
-    var pageUrl = window.location.search.substring(1);
-    var urlVariables = pageUrl.split('&');
-
-    for (var i = 0; i < urlVariables.length; i++) {
-        var parameterName = urlVariables[i].split('=');
-
-        if (parameterName[0] === param) {
-            return parameterName[1] === undefined ? true : decodeURIComponent(parameterName[1]);
-        }
-    }
-}
-
 function call() {
     var pledgeTicketID = getUrlParameter('pledgeTicketID');
     var params = "id=" + pledgeTicketID;
     $.ajax({
-        url: '../api/get-pledge-ticker-details.php?' + params,
+        url: api + 'api-pawn-shop/get-pledge-ticket-details.php?' + params,
         method: 'GET',
         processData: false,
         contentType: false,
@@ -30,7 +16,7 @@ function call() {
             $("#interestRate").append(this.results.InterestRate);
             $("#pledgeStartDate").append(this.results.PledgeStartDate);
             $("#pledgeEndDate").append(this.results.PledgeEndDate);
-            $("#pledgeStatus").append(this.results.PledgeStatusName);
+            $("#pledgeStatus").append(this.results.PledgeStatus);
             
             if ($("#pledgeStatus").text() == 'จำนำ') {
                 $("#pledgeStatus").css({
@@ -49,11 +35,12 @@ function call() {
 
             $("#customerID").append(this.results.CustomerID);
             $("#citizenID").append(this.results.CitizenID);
-            $("#customerName").append(this.results.TitleName + ' ' + this.results.Name + ' ' + this.results.Surname);
+            $("#customerName").append(this.results.Title + ' ' + this.results.Name + ' ' + this.results.Surname);
             $("#currentAddress").append(this.results.CurrentAddress);
             $("#phone").append(this.results.Phone);
             $("#email").append(this.results.Email);
             $("#assetID").append(this.results.AssetID);
+            $("#titleAsset").append(this.results.TitleAsset);
             $("#category").append(this.results.CategoryName);
             $("#subCategory").append(this.results.SubCategoryName);
             $("#brand").append(this.results.Brand);
@@ -89,7 +76,7 @@ $("#btnRedeem").click(function() {
                 var pledgeTicketID = getUrlParameter('pledgeTicketID');
                 var params = "id=" + pledgeTicketID;
                 $.ajax({
-                    url: '../api/update-pledge-ticket-status.php?' + params,
+                    url: api + 'api/update-pledge-ticket-status.php?' + params,
                     method: 'GET',
                     processData: false,
                     contentType: false,
@@ -162,7 +149,7 @@ $("#btnConfirm").click(function() {
     var priceRate = $("#priceRate").text();
     var params = "id=" + pledgeTicketID + "&priceRate=" + priceRate;
     $.ajax({
-        url: '../api/add-continue-rate.php?' + params,
+        url: api + 'api/add-continue-rate.php?' + params,
         method: 'GET',
         processData: false,
         contentType: false,
@@ -189,7 +176,7 @@ function callContinueRate() {
     var pledgeTicketID = getUrlParameter('pledgeTicketID');
     var params = "id=" + pledgeTicketID;
     $.ajax({
-        url: '../api/get-continue-rate.php?' + params,
+        url: api + 'api-pawn-shop/get-continue-rate.php?' + params,
         method: 'GET',
         processData: false,
         contentType: false,

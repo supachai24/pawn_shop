@@ -333,9 +333,11 @@
 table.dataTable {
   border-collapse: collapse !important; }
   table.dataTable thead th, table.dataTable thead td {
-    border-bottom: 1px solid #ddd !important; }
+    /* border-bottom: 1px solid #ddd !important;  */
+  }
   table.dataTable.no-footer {
-    border-bottom: 1px solid #ddd !important; }
+    /* border-bottom: 1px solid #ddd !important;  */
+  }
 
 .dataTables_wrapper {
   padding: 0 !important;

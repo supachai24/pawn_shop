@@ -16,7 +16,7 @@
             <li class="menu-header">PAGES</li>
             <li class="nav-item dropdown">
                 <?= (basename($_SERVER['PHP_SELF']) == "pledging-process.php") ? "<li class=\"active\" >" : "<li>" ?>
-                    <a class="nav-link" href="pledging-process.php"><i class="fas fa-file-alt"></i><span>Pledging process</span></a>
+                    <a class="nav-link" href="pledging-process.php"><i class="fas fa-file-alt"></i><span>Pledging Process</span></a>
                 </li>
             </li>
             <li class="menu-header">Dashboard</li>
