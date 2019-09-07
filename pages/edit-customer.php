@@ -29,7 +29,14 @@
                             </div>
                             <div class="card-body">
                                 <form id="submitCustomer">
+                                    <input type="hidden" id="customerId">
                                     <?php include "../libraries/input-customer.php" ?>
+                                    <div class="form-group row">
+                                        <div class="col-md-4"></div>
+                                        <div class="col-lg-4 col-md-6 text-right">
+                                            <button type="submit" class="btn btn-success btn-icon icon-right">Submit <i class="far fa-check-circle"></i></button>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>

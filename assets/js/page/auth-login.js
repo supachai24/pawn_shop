@@ -3,7 +3,7 @@ $(document).ready(function() {
         var formData = new FormData(this);
         e.preventDefault();
         $.ajax({
-            url: '../api/post-login.php',
+            url: api + 'api-pawn-shop/post-login.php',
             method: 'POST',
             processData: false,
             contentType: false,

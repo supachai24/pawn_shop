@@ -21,7 +21,9 @@
             </li>
             <li class="nav-item dropdown">
                 <?= (basename($_SERVER['PHP_SELF']) == "customer.php" ||
-                    basename($_SERVER['PHP_SELF']) == "customer-details.php") ? "<li class=\"active\" >" : "<li>" ?>
+                    basename($_SERVER['PHP_SELF']) == "customer-details.php" ||
+                    basename($_SERVER['PHP_SELF']) == "edit-customer.php" ||
+                    basename($_SERVER['PHP_SELF']) == "add-customer.php") ? "<li class=\"active\" >" : "<li>" ?>
                     <a class="nav-link" href="customer.php"><i class="fas fa-user"></i><span>Customer</span></a>
                 </li>
             </li>

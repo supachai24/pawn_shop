@@ -24,7 +24,8 @@ $(document).ready(function() {
     });
 
     $("#btnEdit").click(function() {
-        window.location.href = "edit-customer.php";
+        var params = "customerId=" + customerId;
+        window.location.href = "edit-customer.php?" + params;
     });
 });
 
@@ -103,3 +104,41 @@ function display(results) {
         console.log('Empty data');
     }
 }
+
+$("#btnDelete").click(function() {
+    swal({
+        title: "ยืนยันลบข้อมูลลูกค้า",
+        text: "คุณต้องการลบข้อมูล "+ $("#customerName").text() +" ใช่หรือไม่?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                var customerId = $("#customerId").val();
+                var params = "id=" + customerId;
+                $.ajax({
+                    url: api + "api-pawn-shop/delete-customer.php?" + params,
+                    method: "GET",
+                    processData: false,
+                    contentType: false,
+                    dataType: "json",
+                    success: function(data) {
+                        var res = data;
+                        console.log(res);
+                        if (res.status.code == 0) {
+                            swal({
+                                title: "ดำเนินการเรียบร้อย",
+                                text: "ลบข้อมูลลูกค้าเรียบร้อย",
+                                icon: "success"
+                            }).then(function() {
+                                window.location.href = "customer.php"
+                            });
+                        }
+                    },
+                    error: function(jqXHR) {
+                        console.log(jqXHR);
+                    }
+                });
+            } 
+    });
+});
