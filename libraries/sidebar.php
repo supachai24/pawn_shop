@@ -30,13 +30,21 @@
             <li class="menu-header">Setting</li>
             <li class="nav-item dropdown <?= (basename($_SERVER['PHP_SELF']) == "user.php" || 
                 basename($_SERVER['PHP_SELF']) == "add-user.php" ||
-                basename($_SERVER['PHP_SELF']) == "edit-user.php") ? "active" : "" ?>">
+                basename($_SERVER['PHP_SELF']) == "edit-user.php") ||
+                basename($_SERVER['PHP_SELF']) == "category.php" ||
+                basename($_SERVER['PHP_SELF']) == "add-category.php" ||
+                basename($_SERVER['PHP_SELF']) == "edit-category.php" ? "active" : "" ?>">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-cog"></i><span>Setting</span></a>
                 <ul class="dropdown-menu">
                     <?= (basename($_SERVER['PHP_SELF']) == "user.php" ||
                         basename($_SERVER['PHP_SELF']) == "add-user.php" ||
                         basename($_SERVER['PHP_SELF']) == "edit-user.php") ? "<li class=\"active\" >" : "<li>" ?>
                         <a class="nav-link" href="user.php"><span>User</span></a>
+                    </li>
+                    <?= (basename($_SERVER['PHP_SELF']) == "category.php" ||
+                        basename($_SERVER['PHP_SELF']) == "add-category.php" ||
+                        basename($_SERVER['PHP_SELF']) == "edit-category.php") ? "<li class=\"active\" >" : "<li>" ?>
+                        <a class="nav-link" href="category.php"><span>Category</span></a>
                     </li>
                 </ul>
             </li>

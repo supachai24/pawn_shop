@@ -125,3 +125,41 @@ $("#submitUser").submit(function(e) {
         });
     }
 });
+
+$("#btnDelete").click(function() {
+    swal({
+        title: "ยืนยันลบข้อมูลเจ้าหน้าที่",
+        text: "คุณต้องการลบข้อมูล "+ $("#name").text() +" ใช่หรือไม่?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                var userId = getUrlParameter("userId");
+                var params = "id=" + userId;
+                $.ajax({
+                    url: api + "api-pawn-shop/delete-user.php?" + params,
+                    method: "GET",
+                    processData: false,
+                    contentType: false,
+                    dataType: "json",
+                    success: function(data) {
+                        var res = data;
+                        console.log(res);
+                        if (res.status.code == 0) {
+                            swal({
+                                title: "ดำเนินการเรียบร้อย",
+                                text: "ลบข้อมูลเจ้าหน้าที่เรียบร้อย",
+                                icon: "success"
+                            }).then(function() {
+                                window.location.href = "user.php"
+                            });
+                        }
+                    },
+                    error: function(jqXHR) {
+                        console.log(jqXHR);
+                    }
+                });
+            } 
+    });
+});
