@@ -25,7 +25,7 @@
                     <div class="section-body">
                         <div class="card card-primary">
                             <div class="card-header d-flex justify-content-between">
-                                <h4>แก้ไขข้อมูลลูกค้า</h4>
+                                <h4>เพิ่มข้อมูลลูกค้า</h4>
                                 <button type="button" class="btn btn-secondary icon-left" onClick="goBack()"><i class="far fa-arrow-alt-circle-left"></i> Back</button>
                             </div>
                             <div class="card-body">
@@ -61,6 +61,6 @@
     <script src="../assets/js/custom.js"></script>
 
     <!-- Page Specific JS File -->
-    <script src="../assets/js/page/edit-customer.js"></script>
+    <script src="../assets/js/page/add-customer.js"></script>
 </body>
 </html>

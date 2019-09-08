@@ -85,3 +85,7 @@ function display(results) {
         console.log('Empty data');
     }
 }
+
+$("#btnAdd").click(function() {
+    window.location.href = "add-customer.php";
+});

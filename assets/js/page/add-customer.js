@@ -1,29 +1,4 @@
 $(document).ready(function() {
-    var customerId = getUrlParameter("customerId");
-    var params = "id=" + customerId;
-    $.ajax({
-        url: api + "api-pawn-shop/get-customer-detail.php?" + params,
-        method: "GET",
-        processData: false,
-        contentType: false,
-        dataType: "json",
-        success: function(data) {
-            var res = data;
-            res = res.data[0];
-            $("#customerId").val(res.CustomerID);
-            $("#title").val(res.Title);
-            $("#name").val(res.Name);
-            $("#surname").val(res.Surname); 
-            $("#citizenId").val(res.CitizenID);
-            $("#address").val(res.CurrentAddress);
-            $("#phone").val(res.Phone);
-            $("#email").val(res.Email);
-        },
-        error: function(jqXHR) {
-            console.log(jqXHR);
-        }
-    });
-
     $("#citizenId").mask('0-0000-00000-00-0');
     $("#phone").mask('000-000-0000');
 
@@ -82,7 +57,6 @@ function validateStepOne() {
 $("#submitCustomer").submit(function(e) {
     e.preventDefault();
     var formData = JSON.stringify({
-        customerId: $("#customerId").val(),
         title: $("#title").val(),
         name: $("#name").val(),
         surname: $("#surname").val(),
@@ -93,7 +67,7 @@ $("#submitCustomer").submit(function(e) {
     });
     if (validateStepOne()) {
         $.ajax({
-            url: api + "api-pawn-shop/update-customer.php",
+            url: api + "api-pawn-shop/add-customer.php",
             method: "POST",
             processData: false,
             contentType: false,
@@ -101,11 +75,14 @@ $("#submitCustomer").submit(function(e) {
             dataType: "json",
             success: function(data) {
                 var res = data;
+                // console.log(res);
                 if (res.status.code == 0) {
                     swal({
                         title: "ดำเนินการเรียบร้อย",
                         text: "บันทึกข้อมูลลูกค้าเรียบร้อย",
                         icon: "success"
+                    }).then(function() {
+                        window.location.href = "customer.php";
                     });
                 } else {
                     swal({

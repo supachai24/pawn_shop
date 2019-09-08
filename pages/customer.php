@@ -16,7 +16,7 @@
             <?php include '../libraries/sidebar.php'; ?>
 
             <div class="btn-add">
-                <button class="btn btn-primary rounded-circle"><i class="fas fa-plus"></i></button>
+                <button id="btnAdd" class="btn btn-primary rounded-circle"><i class="fas fa-plus"></i></button>
             </div>
             <!-- Main Content -->
             <div class="main-content">

@@ -9,7 +9,10 @@ $(document).ready(function() {
         dataType: "json",
         success: function(data) {
             var res = data;
-            display(res);
+            console.log(res);
+            if (res.status.code == 0) {
+                display(res);
+            }
             res = res.data[0];
             $("#customerName").append(res.Title + " " + res.Name + " " + res.Surname);
             $("#customerId").append(res.CustomerID);
@@ -114,7 +117,7 @@ $("#btnDelete").click(function() {
         dangerMode: true,
         }).then((willDelete) => {
             if (willDelete) {
-                var customerId = $("#customerId").val();
+                var customerId = getUrlParameter("customerId");
                 var params = "id=" + customerId;
                 $.ajax({
                     url: api + "api-pawn-shop/delete-customer.php?" + params,
