@@ -12,6 +12,8 @@
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.bootstrap4.min.css">
+    <link rel="stylesheet" href="../assets/modules/bootstrap-daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="../assets/modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">

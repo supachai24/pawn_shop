@@ -24,12 +24,55 @@
 
                     <div class="section-body">
                         <div class="card card-primary">
-                            <div class="card-header">
-                                <div class="card-body">
+                            <div class="card-body">
+                                <form action="">
                                     <div class="row">
-                                        <input type="date" class="form-control">
+                                        <div class="col-lg-3">
+                                            <label for="">วันรับจำนำเริ่มต้น</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                    </div>
+                                                </div>
+                                                <input type="text" class="form-control datepicker" id="" name="">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3">
+                                            <label for="">วันรับจำนำสิ้นสุด</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                    </div>
+                                                </div>
+                                                <input type="text" class="form-control datepicker" id="" name="">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3">
+                                            <label for="">หมวดหมู่</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="0">ทั้งหมด</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-lg-3">
+                                            <label for="">สถานะ</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="ทั้งหมด">ทั้งหมด</option>
+                                                <option value="จำนำ">จำนำ</option>
+                                                <option value="ไถ่ถอน">ไถ่ถอน</option>
+                                                <option value="ยกเลิก">ยกเลิก</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
+
+                                    <div class="text-right mt-4">
+                                        <button class="btn btn-warning btn-icon icon-left"><i class="fas fa-search"></i> ค้นหา</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                         <div class="card">
@@ -63,6 +106,8 @@
     <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.3.0/js/select.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.3.0/js/select.bootstrap4.js"></script>
+    <script src="../assets/modules/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="../assets/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
 
     <!-- Template JS File -->
     <script src="../assets/js/scripts.js"></script>
