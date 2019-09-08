@@ -30,7 +30,6 @@
                             </div>
                             <div class="card-body">
                                 <form id="submitCustomer">
-                                    <input type="hidden" id="customerId">
                                     <?php include "../libraries/input-customer.php" ?>
                                     <div class="form-group row">
                                         <div class="col-md-4"></div>
@@ -51,10 +50,6 @@
     <!-- JS Libraies -->
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.16/dist/jquery.mask.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/select/1.3.0/js/select.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/select/1.3.0/js/select.bootstrap4.js"></script>
 
     <!-- Template JS File -->
     <script src="../assets/js/scripts.js"></script>

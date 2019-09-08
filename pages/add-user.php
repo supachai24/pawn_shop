@@ -19,19 +19,18 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>รายละเอียดลูกค้า</h1>
+                        <h1>รายละเอียดเจ้าหน้าที่</h1>
                     </div>
 
                     <div class="section-body">
                         <div class="card card-primary">
                             <div class="card-header d-flex justify-content-between">
-                                <h4>แก้ไขข้อมูลลูกค้า</h4>
+                                <h4>เพิ่มข้อมูลเจ้าหน้าที่</h4>
                                 <button type="button" class="btn btn-secondary icon-left" onClick="goBack()"><i class="far fa-arrow-alt-circle-left"></i> Back</button>
                             </div>
                             <div class="card-body">
-                                <form id="submitCustomer">
-                                    <input type="hidden" id="customerId">
-                                    <?php include "../libraries/input-customer.php" ?>
+                                <form id="submitUser">
+                                    <?php include "../libraries/input-user.php" ?>
                                     <div class="form-group row">
                                         <div class="col-md-4"></div>
                                         <div class="col-lg-4 col-md-6 text-right">
@@ -49,14 +48,12 @@
     <?php include '../libraries/footer.php'; ?>
 
     <!-- JS Libraies -->
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.16/dist/jquery.mask.min.js"></script>
 
     <!-- Template JS File -->
     <script src="../assets/js/scripts.js"></script>
     <script src="../assets/js/custom.js"></script>
 
     <!-- Page Specific JS File -->
-    <script src="../assets/js/page/edit-customer.js"></script>
+    <script src="../assets/js/page/add-user.js"></script>
 </body>
 </html>
