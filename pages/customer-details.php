@@ -88,6 +88,174 @@
                     </div>
                 </section>
             </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="pledgeTicketModal" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content animated fadeInUp">
+                <div class="modal-header">
+                    <h5 class="modal-title">รายละเอียดตั๋วจำนำ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h4>รายละเอียด</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                        <a class="nav-link active" id="v-pills-pledge-ticker-tab" data-toggle="pill" href="#v-pills-pledge-ticker" role="tab" aria-controls="v-pills-pledge-ticker" aria-selected="true">รายละเอียดตั๋วจำนำ</a>
+                                        <a class="nav-link" id="v-pills-asset-tab" data-toggle="pill" href="#v-pills-asset" role="tab" aria-controls="v-pills-asset" aria-selected="false">รายละเอียดทรัพย์สิน</a>
+                                        <a class="nav-link" id="v-pills-continue-rate-tab" data-toggle="pill" href="#v-pills-continue-rate" role="tab" aria-controls="v-pills-continue-rate" aria-selected="false">รายละเอียดต่อดอกเบี้ย</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="tab-content" id="v-pills-tabContent">
+
+                                <div class="tab-pane fade show active" id="v-pills-pledge-ticker" role="tabpanel" aria-labelledby="v-pills-pledge-ticker-tab">
+                                    <div class="card card-primary">
+                                        <div class="card-header">
+                                            <h4>รายละเอียดตั๋วจำนำ</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="form-group row mb-4">
+                                                <span class="text-md-right col-12 col-md-6 col-lg-6">ตั๋วรับจำนำ : </span>
+                                                <div class="col-sm-12 col-md-6">
+                                                    <span id="pledgeTicketID"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-6">
+                                                <span class="text-md-right col-12 col-md-6 col-lg-6">ราคารับจำนำ : </span>
+                                                <div class="col-sm-12 col-md-6">
+                                                    <span id="price"></span><span>&nbsp;</span><span>บาท</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-6">
+                                                <span class="text-md-right col-12 col-md-6 col-lg-6">อัตราดอกเบี้ย : </span>
+                                                <div class="col-sm-12 col-md-6">
+                                                    <span id="interestRate"></span><span>&nbsp;</span><span>บาท</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-6">
+                                                <span class="text-md-right col-12 col-md-6 col-lg-6">วันที่จำนำ : </span>
+                                                <div class="col-sm-12 col-md-6">
+                                                    <span id="pledgeStartDate"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-6">
+                                                <span class="text-md-right col-12 col-md-6 col-lg-6">วันที่ครบกำหนด : </span>
+                                                <div class="col-sm-12 col-md-6">
+                                                    <span id="pledgeEndDate"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-6">
+                                                <span class="text-md-right col-12 col-md-6 col-lg-6">จำนวนเงินไถ่ถอน : </span>
+                                                <div class="col-sm-12 col-md-6">
+                                                    <span id="redeemPrice"></span><span>&nbsp;</span><span>บาท</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-6">
+                                                <span class="text-md-right col-12 col-md-6 col-lg-6">สถานะ : </span>
+                                                <div class="col-sm-12 col-md-6">
+                                                    <span id="pledgeStatus"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="v-pills-asset" role="tabpanel" aria-labelledby="v-pills-asset-tab">
+                                    <div class="card card-primary">
+                                        <div class="card-header">
+                                            <h4>รายละเอียดทรัพย์สิน</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="form-group row mb-4">
+                                                <span class="text-md-right col-12 col-md-6 col-lg-6">รหัสทรัพย์สิน : </span>
+                                                <div class="col-sm-12 col-md-6">
+                                                    <span id="assetID"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-4">
+                                                <span class="text-md-right col-12 col-md-6 col-lg-6">ทรัพย์สิน : </span>
+                                                <div class="col-sm-12 col-md-6">
+                                                    <span id="titleAsset"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-6">
+                                                <span class="text-md-right col-12 col-md-6 col-lg-6">หมวดหมู่ : </span>
+                                                <div class="col-sm-12 col-md-6">
+                                                    <span id="category"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-6">
+                                                <span class="text-md-right col-12 col-md-6 col-lg-6">ยี่ห้อ : </span>
+                                                <div class="col-sm-12 col-md-6">
+                                                    <span id="brand"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-6">
+                                                <span class="text-md-right col-12 col-md-6 col-lg-6">รุ่น : </span>
+                                                <div class="col-sm-12 col-md-6">
+                                                    <span id="model"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-6">
+                                                <span class="text-md-right col-12 col-md-6 col-lg-6">สี : </span>
+                                                <div class="col-sm-12 col-md-6">
+                                                    <span id="color"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-6">
+                                                <span class="text-md-right col-12 col-md-6 col-lg-6">ขนาด : </span>
+                                                <div class="col-sm-12 col-md-6">
+                                                    <span id="size"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-6">
+                                                <span class="text-md-right col-12 col-md-6 col-lg-6">รายละเอีด : </span>
+                                                <div class="col-sm-12 col-md-6">
+                                                    <span id="description"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="v-pills-continue-rate" role="tabpanel" aria-labelledby="v-pills-continue-rate-tab">
+                                    <div class="card card-primary">
+                                        <div class="card-header">
+                                            <h4>รายละเอียดต่อดอกเบี้ย</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table id="continueRateTable" class="table table-striped table-md">
+                                                    <thead>
+                                                        <tr>
+                                                            <th width="10%">ครั้งที่</th>
+                                                            <th width="50%">จำนวนเงิน</th>
+                                                            <th width="40%">วันที่/เวลา ต่อดอกเบี้ย</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
             
     <!-- Footer -->
     <?php include '../libraries/footer.php'; ?>
