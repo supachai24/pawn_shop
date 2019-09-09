@@ -74,9 +74,8 @@ function display(results) {
                 + '<input type="hidden" class="o_Color" value="' + data.Color + '" />'
                 + '<input type="hidden" class="o_Size" value="' + data.Size + '" />'
                 + '<input type="hidden" class="o_InterestRate" value="' + data.InterestRate + '" />'
-                + '<input type="hidden" class="o_PledgeStatusName" value="' + data.PledgeStatusName + '" />'
+                + '<input type="hidden" class="o_PledgeStatus" value="' + data.PledgeStatus+ '" />'
                 + '<input type="hidden" class="o_CategoryName" value="' + data.CategoryName + '" />'
-                + '<input type="hidden" class="o_SubCategoryName" value="' + data.SubCategoryName + '" />'
                 + '<input type="hidden" class="o_TitleName" value="' + data.Title + '" />'
                 + index++
             );
