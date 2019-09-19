@@ -27,7 +27,9 @@ $(document).ready(function() {
     $("#endDate").val(now);
     var formData = JSON.stringify({
         startDate: $("#startDate").val(),
-        endDate: $("#endDate").val()
+        endDate: $("#endDate").val(),
+        category: $("#category").val(),
+        status: $("#status").val()
     });
     $.ajax({
         url: api + "api-pawn-shop/report-pledge-ticket.php",
@@ -114,3 +116,27 @@ function display(results) {
         console.log('Empty data');
     }
 }
+
+$("#btnSearch").click(function(e) {
+    e.preventDefault();
+    var formData = JSON.stringify({
+        startDate: $("#startDate").val(),
+        endDate: $("#endDate").val()
+    });
+    $.ajax({
+        url: api + "api-pawn-shop/report-pledge-ticket.php",
+        method: "POST",
+        processData: false,
+        contentType: false,
+        data: formData,
+        dataType: "json",
+        success: function(data) {
+            console.log(data);
+            var res = data;
+            display(res);
+        },
+        error: function(jqXHR) {
+            console.log(jqXHR);
+        }
+    });
+});

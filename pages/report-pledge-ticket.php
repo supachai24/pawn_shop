@@ -71,7 +71,7 @@
                                     </div>
 
                                     <div class="text-right mt-4">
-                                        <button class="btn btn-warning btn-icon icon-left"><i class="fas fa-search"></i> ค้นหา</button>
+                                        <button type="button" id="btnSearch" class="btn btn-warning btn-icon icon-left"><i class="fas fa-search"></i> ค้นหา</button>
                                     </div>
                                 </form>
                             </div>
