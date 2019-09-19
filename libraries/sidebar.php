@@ -36,7 +36,7 @@
                         <a class="nav-link" href="report-pledge-ticket.php"><span>Pledge Ticket</span></a>
                     </li>
                     <?= (basename($_SERVER['PHP_SELF']) == "report-continue-rate.php") ? "<li class=\"active\" >" : "<li>" ?>
-                        <a class="nav-link" href="report-continue-rate.php"><span>Continue Rate</span></a>
+                        <!-- <a class="nav-link" href="report-continue-rate.php"><span>Continue Rate</span></a> -->
                     </li>
                 </ul>
             </li>

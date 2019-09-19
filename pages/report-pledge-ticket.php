@@ -61,7 +61,7 @@
                                         <div class="col-lg-3">
                                             <label for="">สถานะ</label>
                                             <select name="status" id="status" class="form-control">
-                                                <option value="ทั้งหมด">ทั้งหมดยกเว้นยกเลิก</option>
+                                                <option value="ทั้งหมดยกเว้นยกเลิก">ทั้งหมดยกเว้นยกเลิก</option>
                                                 <option value="จำนำ">จำนำ</option>
                                                 <option value="ไถ่ถอน">ไถ่ถอน</option>
                                                 <option value="ยกเลิก">ยกเลิก</option>

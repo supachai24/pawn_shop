@@ -121,7 +121,9 @@ $("#btnSearch").click(function(e) {
     e.preventDefault();
     var formData = JSON.stringify({
         startDate: $("#startDate").val(),
-        endDate: $("#endDate").val()
+        endDate: $("#endDate").val(),
+        category: $("#category").val(),
+        status: $("#status").val()
     });
     $.ajax({
         url: api + "api-pawn-shop/report-pledge-ticket.php",
