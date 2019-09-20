@@ -96,7 +96,7 @@ $("#submitUser").submit(function(e) {
                         text: "บันทึกข้อมูลเจ้าหน้าที่เรียบร้อย",
                         icon: "success"
                     }).then(function() {
-                        window.location.href = "customer.php";
+                        window.location.href = "user.php";
                     });
                 } else {
                     swal({

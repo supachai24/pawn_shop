@@ -27,8 +27,8 @@
                     <a class="nav-link" href="customer.php"><i class="fas fa-user"></i><span>Customer</span></a>
                 </li>
             </li>
-            <li class="menu-header">Report</li>
-            <li class="nav-item dropdown <?= (basename($_SERVER['PHP_SELF']) == "report-pledge-ticket.php" ||
+            <li <?= $_SESSION["access"] != "Admin" ? "style='display:none;'" : "style='display:block;'" ?> class="menu-header">Report</li>
+            <li <?= $_SESSION["access"] != "Admin" ? "style='display:none;'" : "style='display:block;'" ?> class="nav-item dropdown <?= (basename($_SERVER['PHP_SELF']) == "report-pledge-ticket.php" ||
                 basename($_SERVER['PHP_SELF']) == "report-continue-rate.php") ? "active" : "" ?>">
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-chart-bar"></i><span>Report</span></a>
                 <ul class="dropdown-menu">
@@ -40,8 +40,8 @@
                     </li>
                 </ul>
             </li>
-            <li class="menu-header">Setting</li>
-            <li class="nav-item dropdown <?= (basename($_SERVER['PHP_SELF']) == "user.php" || 
+            <li <?= $_SESSION["access"] != "Admin" ? "style='display:none;'" : "style='display:block;'" ?> class="menu-header">Setting</li>
+            <li <?= $_SESSION["access"] != "Admin" ? "style='display:none;'" : "style='display:block;'" ?> class="nav-item dropdown <?= (basename($_SERVER['PHP_SELF']) == "user.php" || 
                 basename($_SERVER['PHP_SELF']) == "add-user.php" ||
                 basename($_SERVER['PHP_SELF']) == "edit-user.php") ||
                 basename($_SERVER['PHP_SELF']) == "category.php" ||
