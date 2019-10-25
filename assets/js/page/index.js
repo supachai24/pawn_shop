@@ -110,7 +110,7 @@ function call() {
         contentType: false,
         dataType: "json",
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var results = data;
             display(results);
         }
@@ -124,7 +124,6 @@ function countDownDate(date, id) {
     var now = new Date().getTime();
     var distance = endDate - now;
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    console.log(days);
 
     if (distance < 0) {
         var params = "id=" + id;
@@ -136,6 +135,9 @@ function countDownDate(date, id) {
             dataType: "json",
             success: function (data) {
                 console.log(data);
+            }, 
+            error: function(jqXHR) {
+                console.log("Error", jqXHR);
             }
         });
     }

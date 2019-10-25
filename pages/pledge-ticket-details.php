@@ -221,9 +221,11 @@
 
                                 </div>
                                 <div class="text-right">
-                                    <button type="button" id="btnRedeem" class="btn btn-primary m-2">ไถ่ถอน</button>
+                                    <button type="button" id="btnPrint" class="btn btn-info m-2 px-4">พิมพ์</button>
+                                    <button type="button" id="btnEdit" class="btn btn-secondary m-2 px-4">แก้ไข</button>
+                                    <button type="button" id="btnRedeem" class="btn btn-primary m-2 px-4">ไถ่ถอน</button>
                                     <button type="button" id="btnContinueRate" class="btn btn-warning">ต่อดอกเบี้ย</button>
-                                    <button <?= $_SESSION["access"] != "Admin" ? "style='display:none;'" : "style='display:inline-block;'" ?> type="button" id="btnCancel" class="btn btn-danger m-2">ยกเลิก</button>
+                                    <button <?= $_SESSION["access"] != "Admin" ? "style='display:none;'" : "style='display:inline-block;'" ?> type="button" id="btnCancel" class="btn btn-danger m-2 px-4">ยกเลิก</button>
                                 </div>
                             </div>
                         </div>

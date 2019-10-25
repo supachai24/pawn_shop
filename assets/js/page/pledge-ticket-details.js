@@ -1,3 +1,5 @@
+var resultObj;
+
 function call() {
     var pledgeTicketID = getUrlParameter('pledgeTicketID');
     var params = "id=" + pledgeTicketID;
@@ -10,7 +12,8 @@ function call() {
         success: function (data) {
             var results = data;
             this.results = results.data;
-            console.log(this.results);
+            resultObj = this.results;
+            // console.log(this.results);
             $("#pledgeTicketID").append(this.results.PledgeTicketID);
             $("#price").append(parseFloat(this.results.Price).toLocaleString('thai', { minimumFractionDigits: 2}));
             $("#interestRate").append(this.results.InterestRate);
@@ -282,3 +285,11 @@ function handleGetMonth() {
         return month;
     }
 }
+
+$("#btnEdit").click(function() {
+   store.set("pledgeDetails", resultObj);
+   store.set("editPledgeTicket", {
+       edit: true
+   })
+   window.location.href = "./pledging-process.php";
+});

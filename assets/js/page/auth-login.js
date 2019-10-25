@@ -16,6 +16,15 @@ $(document).ready(function() {
                 if (myData == 0) {
                     window.location.href="../pages/index.php";
                 }
+            }, error: function(jqXHR) {
+                console.log("Error", jqXHR);
+                if ($("#username").val() != "" && $("#password").val() != "") {
+                    swal({
+                        title: "ผิดพลาด",
+                        text: "ชื่อผู้ใช้หรือรหัสผู้ใช้ไม่ถูกต้อง",
+                        icon: "error"
+                    });
+                }
             }            
         });
     });

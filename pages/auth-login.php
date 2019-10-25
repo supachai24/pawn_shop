@@ -39,7 +39,7 @@
                     <label for="username">Username</label>
                     <input id="username" type="text" class="form-control" name="username" tabindex="1" required autofocus>
                     <div class="invalid-feedback">
-                      Please fill in your email
+                      Please fill in your username
                     </div>
                   </div>
 
@@ -107,7 +107,8 @@
   <script src="../assets/js/stisla.js"></script>
 
   <!-- JS Libraies -->
-
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
   <!-- Page Specific JS File -->
 
   <!-- Template JS File -->
