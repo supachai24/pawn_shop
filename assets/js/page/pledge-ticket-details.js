@@ -293,3 +293,7 @@ $("#btnEdit").click(function() {
    })
    window.location.href = "./pledging-process.php";
 });
+
+$("#btnPrint").click(function() {
+    window.location.href = "../test.php";
+});
