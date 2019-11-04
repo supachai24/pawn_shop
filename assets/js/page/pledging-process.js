@@ -291,18 +291,48 @@ $("#wizard-steps").submit(function(e) {
         data: formData,
         dataType: "json",
         success: function(data) {
-        //   console.log(data);
+          // console.log(data);
           var res = data;
           if (res.status.code == 0) {
             swal({
               title: "ดำเนินการเรียบร้อย",
               text: "แก้ไขข้อมูลตั๋วจำนำเรียบร้อย",
               icon: "success"
+            }).then(function() {
+              handleClearInput();
+              var data = store.get("pledgeDetails");
+              var id = data.PledgeTicketID;
+              var params = "id=" + id;
+              $.ajax({
+                url: api + "api-pawn-shop/get-pledge-ticket-details.php?" + params,
+                method: "GET",
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function(data) {
+                  // console.log(data);
+                  var res = data;
+                  if (res.status.code == 0) {
+                    store.set("pledgeDetails", res.data);
+                    window.open("../printform/printform.php", "_blank");
+                  } else {
+                    swal({
+                      title: "ผิดพลาด",
+                      text: "กรุณาทำใหม่อีกครั้ง",
+                      icon: "error"
+                    });
+                  }
+                },
+                error: function(jqXHR) {
+                  console.log("Error", jqXHR);
+                }
+              });
+              window.location.href = "pledging-process.php";
             });
           } else {
             swal({
-              title: "ผิดพลาด",
-              text: "บันทึกข้อมูลตั๋วจำนำไม่สำเร็จ",
+              title: "ข้อมูลซ้ำ",
+              text: "กรุณาตรวจสอบเลขบัตรประชาชน เบอร์โทรศัพท์ หรืออีเมล์",
               icon: "error"
             });
           }
@@ -366,6 +396,33 @@ $("#wizard-steps").submit(function(e) {
                     icon: "success"
                   }).then(function() {
                     handleClearInput();
+                    var id = res.data;
+                    var params = "id=" + id;
+                    $.ajax({
+                      url: api + "api-pawn-shop/get-pledge-ticket-details.php?" + params,
+                      method: "GET",
+                      processData: false,
+                      contentType: false,
+                      dataType: "json",
+                      success: function(data) {
+                        // console.log(data);
+                        var res = data;
+                        if (res.status.code == 0) {
+                          store.set("pledgeDetails", res.data);
+                          window.open("../printform/printform.php", "_blank");
+                        } else {
+                          swal({
+                            title: "ผิดพลาด",
+                            text: "กรุณาทำใหม่อีกครั้ง",
+                            icon: "error"
+                          });
+                        }
+                        
+                      },
+                      error: function(jqXHR) {
+                        console.log("Error", jqXHR);
+                      }
+                    });
                     window.location.href = "pledging-process.php";
                   });
                 } else {
@@ -420,6 +477,33 @@ $("#wizard-steps").submit(function(e) {
                     icon: "success"
                   }).then(function() {
                     handleClearInput();
+                    var id = res.data;
+                    var params = "id=" + id;
+                    $.ajax({
+                      url: api + "api-pawn-shop/get-pledge-ticket-details.php?" + params,
+                      method: "GET",
+                      processData: false,
+                      contentType: false,
+                      dataType: "json",
+                      success: function(data) {
+                        // console.log(data);
+                        var res = data;
+                        if (res.status.code == 0) {
+                          store.set("pledgeDetails", res.data);
+                          window.open("../printform/printform.php", "_blank");
+                        } else {
+                          swal({
+                            title: "ผิดพลาด",
+                            text: "กรุณาทำใหม่อีกครั้ง",
+                            icon: "error"
+                          });
+                        }
+                        
+                      },
+                      error: function(jqXHR) {
+                        console.log("Error", jqXHR);
+                      }
+                    });
                     window.location.href = "pledging-process.php";
                   });
                 } else {
@@ -545,3 +629,11 @@ function display(results) {
     console.log("Empty data");
   }
 }
+
+$("#btnClear").click(function() {
+  handleClearInput();
+  store.set("editPledgeTicket", {
+    edit: false
+  });
+  store.set("pledgeDetails", "");
+});

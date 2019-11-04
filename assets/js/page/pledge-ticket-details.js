@@ -1,5 +1,4 @@
 // var resultObj;
-
 function call() {
   var pledgeTicketID = getUrlParameter("pledgeTicketID");
   var params = "id=" + pledgeTicketID;
@@ -12,7 +11,6 @@ function call() {
     success: function(data) {
       var results = data;
       this.results = results.data;
-      // resultObj = this.results;
       store.set("pledgeDetails", this.results);
       // console.log(this.results);
       $("#pledgeTicketID").append(this.results.PledgeTicketID);

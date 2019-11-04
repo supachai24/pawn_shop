@@ -1,3 +1,8 @@
+store.set("editPledgeTicket", {
+    edit: false
+});
+store.set("pledgeDetails", "");
+
 if (typeof table != "undefined") table.destroy();
     table = $("#pledgeTable").DataTable({
     paging: true,
