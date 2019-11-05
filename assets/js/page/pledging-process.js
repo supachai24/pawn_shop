@@ -1,4 +1,10 @@
 $(document).ready(function() {
+  store.set("searchCustomer", false);
+  if (store.get("print")) {
+    window.open("../printform/printform.php", "_blank");
+    store.set("print", false); 
+  }
+
   $.ajax({
     url: api + "api-pawn-shop/get-category.php",
     method: "GET",
@@ -118,6 +124,7 @@ $(document).ready(function() {
     $("#address").val(data[4].CurrentAddress);
     $("#phone").val(data[4].Phone);
     $("#email").val(data[4].Email);
+    store.set("searchCustomer", true);
     $("#customerModal").modal("hide");
   });
 });
@@ -299,7 +306,6 @@ $("#wizard-steps").submit(function(e) {
               text: "แก้ไขข้อมูลตั๋วจำนำเรียบร้อย",
               icon: "success"
             }).then(function() {
-              handleClearInput();
               var data = store.get("pledgeDetails");
               var id = data.PledgeTicketID;
               var params = "id=" + id;
@@ -309,12 +315,14 @@ $("#wizard-steps").submit(function(e) {
                 processData: false,
                 contentType: false,
                 dataType: "json",
-                success: function(data) {
+                success: async function(data) {
                   // console.log(data);
                   var res = data;
-                  if (res.status.code == 0) {
+                  if (res.status.code == 0) {                  
                     store.set("pledgeDetails", res.data);
-                    window.open("../printform/printform.php", "_blank");
+                    store.set("print", true);
+                    window.location.href = "pledging-process.php";
+                    handleClearInput();
                   } else {
                     swal({
                       title: "ผิดพลาด",
@@ -327,12 +335,11 @@ $("#wizard-steps").submit(function(e) {
                   console.log("Error", jqXHR);
                 }
               });
-              window.location.href = "pledging-process.php";
             });
           } else {
             swal({
               title: "ข้อมูลซ้ำ",
-              text: "กรุณาตรวจสอบเลขบัตรประชาชน เบอร์โทรศัพท์ หรืออีเมล์",
+              text: "กรุณาตรวจสอบเลขบัตรประชาชน",
               icon: "error"
             });
           }
@@ -353,90 +360,193 @@ $("#wizard-steps").submit(function(e) {
         data: formData,
         dataType: "json",
         success: function(data) {
-          // console.log(data);
+          console.log(data);
           var res = data;
           if (res.status.code == 0) {
-            var formData = JSON.stringify({
-              pledgeTicketId: pledgeTicketId,
-              customerId: customerId,
-              title: title,
-              name: name,
-              surname: surname,
-              citizenId: citizenId,
-              address: address,
-              phone: phone,
-              email: email,
-              titleAsset: titleAsset,
-              categoryId: categoryId,
-              brand: brand,
-              serialno: serialNo,
-              model: model,
-              size: size,
-              color: color,
-              description: description,
-              price: price,
-              interestRate: interestRate,
-              totalPrice: totalPrice,
-              interestPeriod: interestPeriod
-            });
-            $.ajax({
-              url: api + "api-pawn-shop/add-pledge-ticket-with-customer.php",
-              method: "POST",
-              processData: false,
-              contentType: false,
-              data: formData,
-              dataType: "json",
-              success: function(data) {
-                // console.log(data);
-                var res = data;
-                if (res.status.code == 0) {
+            if (store.get("searchCustomer")) {
+              var formData = JSON.stringify({
+                pledgeTicketId: pledgeTicketId,
+                customerId: customerId,
+                title: title,
+                name: name,
+                surname: surname,
+                citizenId: citizenId,
+                address: address,
+                phone: phone,
+                email: email,
+                titleAsset: titleAsset,
+                categoryId: categoryId,
+                brand: brand,
+                serialno: serialNo,
+                model: model,
+                size: size,
+                color: color,
+                description: description,
+                price: price,
+                interestRate: interestRate,
+                totalPrice: totalPrice,
+                interestPeriod: interestPeriod
+              });
+              
+              $.ajax({
+                url: api + "api-pawn-shop/add-pledge-ticket-with-customer.php",
+                method: "POST",
+                processData: false,
+                contentType: false,
+                data: formData,
+                dataType: "json",
+                success: function(data) {
+                  // console.log(data);
+                  var res = data;
+                  if (res.status.code == 0) {
+                    swal({
+                      title: "ดำเนินการเรียบร้อย",
+                      text: "บันทึกข้อมูลตั๋วจำนำเรียบร้อย",
+                      icon: "success"
+                    }).then(function() {
+                      var id = res.data;
+                      var params = "id=" + id;
+                      $.ajax({
+                        url: api + "api-pawn-shop/get-pledge-ticket-details.php?" + params,
+                        method: "GET",
+                        processData: false,
+                        contentType: false,
+                        dataType: "json",
+                        success: function(data) {
+                          // console.log(data);
+                          var res = data;
+                          if (res.status.code == 0) {
+                            store.set("pledgeDetails", res.data);
+                            store.set("print", true);
+                            window.location.href = "pledging-process.php";
+                            handleClearInput();
+                          } else {
+                            swal({
+                              title: "ผิดพลาด",
+                              text: "กรุณาทำใหม่อีกครั้ง",
+                              icon: "error"
+                            });
+                          }
+                          
+                        },
+                        error: function(jqXHR) {
+                          console.log("Error", jqXHR);
+                        }
+                      });
+                    });
+                  } else {
+                    swal({
+                      title: "ผิดพลาด",
+                      text: "บันทึกข้อมูลตั๋วจำนำไม่สำเร็จ",
+                      icon: "error"
+                    });
+                  }
+                },
+                error: function(jqXHR) {
+                  console.log("Error", jqXHR);
+                }
+              });
+              store.set("searchCustomer", false);
+            } else {
+              swal({
+                title: "ข้อมูลซ้ำ",
+                text: "พบข้อมูลลูกค้า "+ res.data.Title +" "+ res.data.Name +" "+ res.data.Surname +" ต้องการใช่ข้อมูลลนี้หรือไม่?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+              }).then(function(willSelect) {
+                if (willSelect) {
                   swal({
                     title: "ดำเนินการเรียบร้อย",
                     text: "บันทึกข้อมูลตั๋วจำนำเรียบร้อย",
                     icon: "success"
-                  }).then(function() {
-                    handleClearInput();
-                    var id = res.data;
-                    var params = "id=" + id;
-                    $.ajax({
-                      url: api + "api-pawn-shop/get-pledge-ticket-details.php?" + params,
-                      method: "GET",
-                      processData: false,
-                      contentType: false,
-                      dataType: "json",
-                      success: function(data) {
-                        // console.log(data);
-                        var res = data;
-                        if (res.status.code == 0) {
-                          store.set("pledgeDetails", res.data);
-                          window.open("../printform/printform.php", "_blank");
-                        } else {
-                          swal({
-                            title: "ผิดพลาด",
-                            text: "กรุณาทำใหม่อีกครั้ง",
-                            icon: "error"
-                          });
-                        }
-                        
-                      },
-                      error: function(jqXHR) {
-                        console.log("Error", jqXHR);
-                      }
-                    });
-                    window.location.href = "pledging-process.php";
                   });
-                } else {
-                  swal({
-                    title: "ผิดพลาด",
-                    text: "บันทึกข้อมูลตั๋วจำนำไม่สำเร็จ",
-                    icon: "error"
+  
+                  var formData = JSON.stringify({
+                    pledgeTicketId: pledgeTicketId,
+                    customerId: res.data.CustomerID,
+                    title: res.data.Title,
+                    name: res.data.Name,
+                    surname: res.data.Surname,
+                    citizenId: res.data.CitizenID,
+                    address: res.data.CurrentAddress,
+                    phone: res.data.Phone,
+                    email: res.data.Email,
+                    titleAsset: titleAsset,
+                    categoryId: categoryId,
+                    brand: brand,
+                    serialno: serialNo,
+                    model: model,
+                    size: size,
+                    color: color,
+                    description: description,
+                    price: price,
+                    interestRate: interestRate,
+                    totalPrice: totalPrice,
+                    interestPeriod: interestPeriod
+                  });
+                  
+                  $.ajax({
+                    url: api + "api-pawn-shop/add-pledge-ticket-with-customer.php",
+                    method: "POST",
+                    processData: false,
+                    contentType: false,
+                    data: formData,
+                    dataType: "json",
+                    success: function(data) {
+                      // console.log(data);
+                      var res = data;
+                      if (res.status.code == 0) {
+                        swal({
+                          title: "ดำเนินการเรียบร้อย",
+                          text: "บันทึกข้อมูลตั๋วจำนำเรียบร้อย",
+                          icon: "success"
+                        }).then(function() {
+                          var id = res.data;
+                          var params = "id=" + id;
+                          $.ajax({
+                            url: api + "api-pawn-shop/get-pledge-ticket-details.php?" + params,
+                            method: "GET",
+                            processData: false,
+                            contentType: false,
+                            dataType: "json",
+                            success: function(data) {
+                              // console.log(data);
+                              var res = data;
+                              if (res.status.code == 0) {
+                                store.set("pledgeDetails", res.data);
+                                store.set("print", true);
+                                window.location.href = "pledging-process.php";
+                                handleClearInput();
+                              } else {
+                                swal({
+                                  title: "ผิดพลาด",
+                                  text: "กรุณาทำใหม่อีกครั้ง",
+                                  icon: "error"
+                                });
+                              }
+                              
+                            },
+                            error: function(jqXHR) {
+                              console.log("Error", jqXHR);
+                            }
+                          });
+                        });
+                      } else {
+                        swal({
+                          title: "ผิดพลาด",
+                          text: "บันทึกข้อมูลตั๋วจำนำไม่สำเร็จ",
+                          icon: "error"
+                        });
+                      }
+                    },
+                    error: function(jqXHR) {
+                      console.log("Error", jqXHR);
+                    }
                   });
                 }
-              },
-              error: function(jqXHR) {
-                console.log("Error", jqXHR);
-              }
-            });
+              });
+            }
           } else {
             var formData = JSON.stringify({
               pledgeTicketId: pledgeTicketId,
@@ -476,7 +586,6 @@ $("#wizard-steps").submit(function(e) {
                     text: "บันทึกข้อมูลตั๋วจำนำเรียบร้อย",
                     icon: "success"
                   }).then(function() {
-                    handleClearInput();
                     var id = res.data;
                     var params = "id=" + id;
                     $.ajax({
@@ -490,7 +599,9 @@ $("#wizard-steps").submit(function(e) {
                         var res = data;
                         if (res.status.code == 0) {
                           store.set("pledgeDetails", res.data);
-                          window.open("../printform/printform.php", "_blank");
+                          store.set("print", true);
+                          window.location.href = "pledging-process.php";
+                          handleClearInput();
                         } else {
                           swal({
                             title: "ผิดพลาด",
@@ -504,7 +615,6 @@ $("#wizard-steps").submit(function(e) {
                         console.log("Error", jqXHR);
                       }
                     });
-                    window.location.href = "pledging-process.php";
                   });
                 } else {
                   swal({
@@ -548,6 +658,9 @@ function handleClearInput() {
   $("#interestRate").val(1.25);
   $("#totalPrice").val("");
   $("#customerId").val("");
+  store.set("editPledgeTicket", {
+    edit: false
+  });
 }
 
 $("#searchCustomer").click(function() {
@@ -629,11 +742,3 @@ function display(results) {
     console.log("Empty data");
   }
 }
-
-$("#btnClear").click(function() {
-  handleClearInput();
-  store.set("editPledgeTicket", {
-    edit: false
-  });
-  store.set("pledgeDetails", "");
-});

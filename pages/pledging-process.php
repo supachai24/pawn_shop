@@ -80,7 +80,6 @@
                                                 <div class="form-group row">
                                                     <div class="col-md-4"></div>
                                                     <div class="col-lg-4 col-md-6 text-right">
-                                                        <!-- <button id="btnClear" type="button" class="btn btn-icon icon-right btn-warning">Clear <i class="fas fa-broom"></i></button> -->
                                                         <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" class="btn btn-icon icon-right btn-primary next-step">Next <i class="fas fa-arrow-right"></i></a>
                                                     </div>
                                                 </div>
