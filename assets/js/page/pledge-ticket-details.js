@@ -140,12 +140,14 @@ $("#btnCancel").click(function() {
     title: "ยืนยันยกเลิกตั๋วจำนำ",
     text: "คุณต้องการยกเลิกตั๋วจำนำใช่หรือไม่?",
     icon: "warning",
+    content: "input",
     buttons: true,
     dangerMode: true
-  }).then(willCancel => {
-    if (willCancel) {
+  }).then(value => {
+    console.log(value);
+    if (value) {
       var pledgeTicketID = getUrlParameter("pledgeTicketID");
-      var params = "id=" + pledgeTicketID;
+      var params = "id=" + pledgeTicketID + "&comment=" + value;
       $.ajax({
         url: api + "api-pawn-shop/cancel-pledge-ticket.php?" + params,
         method: "GET",
@@ -153,11 +155,12 @@ $("#btnCancel").click(function() {
         contentType: false,
         dataType: "json",
         success: function(data) {
-          console.log(data);
+          // console.log(data);
           if (data.status.code == 0) {
             swal({
               title: "ดำเนินการเรียบร้อย",
-              icon: "success"
+              icon: "success",
+              contnet: "input"
             }).then(function() {
               window.location.href = "index.php";
             });

@@ -54,7 +54,7 @@ if (typeof table != "undefined") table.destroy();
 
 function display(results) {
     table.clear().draw();
-    console.log(results.data);
+    // console.log(results.data);
     if (typeof results.data[0] != "undefined") {
         var index = 1;
         results.data.forEach(function(data) {

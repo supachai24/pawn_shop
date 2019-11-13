@@ -44,6 +44,11 @@ $(document).ready(function() {
         $("#interestRate").val(data.InterestRate);
         $("#totalPrice").val(data.TotalPrice);
         $("#customerId").val(data.CustomerID);
+        var access = localStorage.getItem("access");
+        if (access != "Admin") {
+          $("#price").attr("readonly", true);
+          $("#interestRate").attr("readonly", true);
+        }
       }
     },
     error: function(jqXHR) {

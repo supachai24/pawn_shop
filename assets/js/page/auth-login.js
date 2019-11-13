@@ -12,6 +12,7 @@ $(document).ready(function() {
             success: function(data) {
                 console.log(data);
                 var myData = data;
+                localStorage.setItem("access", myData.data.accessName);
                 myData = myData.status.code;
                 if (myData == 0) {
                     window.location.href="../pages/index.php";
