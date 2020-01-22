@@ -67,6 +67,7 @@
 
                                         <form class="wizard-content mt-2" id="wizard-steps" role="tablist">
                                             <input type="hidden" id="customerId">
+                                            <input type="hidden" id="pledgeTicketId">
 
                                             <!-- STEP 1 -->
                                             <div class="wizard-pane active" id="step1">

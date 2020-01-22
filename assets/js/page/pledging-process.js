@@ -6,6 +6,22 @@ $(document).ready(function() {
   }
 
   $.ajax({
+    url : api + "api-pawn-shop/counter.php",
+    method: "GET",
+    processData: false,
+    contentType: false,
+    dataType: "json",
+    success: function(data) {
+      // console.log(data);
+      var res = data;
+      $("#pledgeTicketId").val("PT-" + res.year + res.month + res.count);
+    },
+    error: function(jqXHR) {
+      console.log("Error", jqXHR);
+    }
+  });
+
+  $.ajax({
     url: api + "api-pawn-shop/get-category.php",
     method: "GET",
     processData: false,
@@ -24,6 +40,7 @@ $(document).ready(function() {
       });
 
       if (store.get("editPledgeTicket").edit) {
+        console.log("Enter");
         var data = store.get("pledgeDetails");
         $("#title").val(data.Title);
         $("#name").val(data.Name);
@@ -264,8 +281,9 @@ $("#wizard-steps").submit(function(e) {
   var interestRate = $("#interestRate").val();
   var totalPrice = $("#totalPrice").val();
   var interestPeriod = $("#interestPeriod").val();
-  var pledgeTicketId =
-    "PT-" + (Math.floor(Math.random() * 899999999) + 100000000);
+  var  pledgeTicketId = $("#pledgeTicketId").val();
+  console.log(pledgeTicketId);
+  //   "PT-" + (Math.floor(Math.random() * 899999999) + 100000000);
   var customerId = $("#customerId").val();
 
   if (validateStepThree()) {
@@ -365,7 +383,7 @@ $("#wizard-steps").submit(function(e) {
         data: formData,
         dataType: "json",
         success: function(data) {
-          console.log(data);
+          // console.log(data);
           var res = data;
           if (res.status.code == 0) {
             if (store.get("searchCustomer")) {
@@ -499,7 +517,7 @@ $("#wizard-steps").submit(function(e) {
                     data: formData,
                     dataType: "json",
                     success: function(data) {
-                      // console.log(data);
+                      console.log(data);
                       var res = data;
                       if (res.status.code == 0) {
                         swal({
@@ -583,7 +601,7 @@ $("#wizard-steps").submit(function(e) {
               data: formData,
               dataType: "json",
               success: function(data) {
-                // console.log(data);
+                console.log(data);
                 var res = data;
                 if (res.status.code == 0) {
                   swal({

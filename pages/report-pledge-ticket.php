@@ -89,6 +89,7 @@
                                                 <th width="15%">ราคารับจำนำ</th>
                                                 <th width="15%">ราคาไถ่ถอน</th>
                                                 <th width="15%">สถานะ</th>
+                                                <th width="15%">หมายเหตุ</th>
                                             </tr>
                                         </thead>
                                     </table>
